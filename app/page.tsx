@@ -8,6 +8,14 @@ import {ExternalLink, Instagram, Linkedin, Twitter} from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
+import {
+    ventures,
+    recentLetters,
+    featuredDrops,
+    stackItems,
+} from '@/lib/constants/constants'
+import {socialLinks} from "@/lib/constants/social-links";
+
 export default function Home() {
     return (
         <div className="mx-auto flex min-h-screen w-full max-w-4xl gap-12 px-8">
@@ -18,8 +26,8 @@ export default function Home() {
                     <div className="flex flex-col gap-4">
                         <div className="block md:hidden">
                             <Image
-                                src="/cole.jpg"
-                                alt="Cole Caccamise"
+                                src="/images/logo-light.png"
+                                alt="Amar Al Fatah"
                                 width={56}
                                 height={56}
                                 className="rounded-full"
@@ -214,15 +222,18 @@ export default function Home() {
                             </p>
                         </div>
                         <div className="flex gap-4">
-                            {socialLinks.map((link) => (
-                                <Link
-                                    key={link.href}
-                                    href={link.href}
-                                    className="flex h-12 w-12 items-center justify-center rounded-md border bg-muted text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors"
-                                >
-                                    {link.icon}
-                                </Link>
-                            ))}
+                            {socialLinks.map((link) => {
+                                const Icon = link.icon;
+                                return (
+                                    <Link
+                                        key={link.href}
+                                        href={link.href}
+                                        className="flex h-12 w-12 items-center justify-center rounded-md border bg-muted text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors"
+                                    >
+                                        <Icon className="h-5 w-5"/>
+                                    </Link>
+                                );
+                            })}
                         </div>
                     </div>
                 </main>
@@ -230,7 +241,8 @@ export default function Home() {
                 <footer className="flex justify-center mx-auto">
           <span className="text-muted-foreground text-sm">
             © 2025{' '}
-              <Link className="hover:opacity-90" href="https://caccamedia.com?utm_source=website&utm_medium=footer-link">
+              <Link className="hover:opacity-90"
+                    href="https://caccamedia.com?utm_source=website&utm_medium=footer-link">
               Caccamedia
             </Link>
           </span>
@@ -240,90 +252,3 @@ export default function Home() {
     )
 }
 
-const ventures = [
-    {
-        title: "YouTube | Cole Caccamise",
-        description: "Aesthetic tech videos.",
-        href: "https://youtube.com/@colecaccamise"
-    },
-    {
-        title: "Hyperapta Studios",
-        description: "Indie game studio.",
-        href: "https://hyperapta.com"
-    }
-]
-
-const recentLetters = [
-    {
-        title: "How I Come Up With Unique Ideas",
-        date: "February 9, 2025",
-        href: "/letters/how-i-come-up-with-unique-ideas"
-    },
-    {
-        title: "F*** The Quick Wins",
-        date: "February 2, 2025",
-        href: "/letters/f-the-quick-wins"
-    },
-    {
-        title: "Everything Takes 10x Longer Than You Think",
-        date: "January 26, 2025",
-        href: "/letters/everything-takes-10x-longer-than-you-think"
-    }
-]
-
-const featuredDrops = [
-    {
-        title: "Dark Mesh Wallpapers",
-        type: "Wallpapers",
-        price: 9,
-        image: "https://raw.githubusercontent.com/amaralfatah/my-gallery/main/portfolio/portfolio-trebez-app.png",
-        href: "/drops/mesh"
-    },
-    {
-        title: "Wave Wallpapers",
-        type: "Wallpapers",
-        price: 9,
-        image: "https://raw.githubusercontent.com/amaralfatah/my-gallery/main/portfolio/portfolio-inklusi-aisyiyah.png",
-        href: "/drops/wave"
-    },
-    {
-        title: "Prism Wallpapers",
-        type: "Wallpapers",
-        price: 9,
-        image: "https://raw.githubusercontent.com/amaralfatah/my-gallery/main/portfolio/portfolio-helpdesk-bsi.png",
-        href: "/drops/prism"
-    }
-]
-
-const stackItems = [
-    {
-        title: "Desk Setup",
-        description: "My main workspace.",
-        href: "/stack/setup"
-    },
-    {
-        title: "Development Stack",
-        description: "All of the apps, tools, and services I use to build my projects.",
-        href: "/stack/development"
-    },
-    {
-        title: "VSCode/Cursor Setup",
-        description: "The extensions, theme, and settings I use.",
-        href: "/stack/vscode"
-    }
-]
-
-const socialLinks = [
-    {
-        href: 'https://caccamise.link/x',
-        icon: <Twitter />,
-    },
-    {
-        href: 'https://caccamise.link/ig',
-        icon: <Instagram className="h-5 w-5" />,
-    },
-    {
-        href: 'https://caccamise.link/in',
-        icon: <Linkedin className="h-5 w-5" />,
-    },
-]
