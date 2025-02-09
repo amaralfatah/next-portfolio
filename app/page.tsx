@@ -1,7 +1,7 @@
 'use client'
 
 // app/page.tsx
-import { Nav } from '@/components/Nav'
+import { DesktopNav } from '@/components/DesktopNav'
 import Image from 'next/image'
 import Link from 'next/link'
 import {ExternalLink, Instagram, Linkedin, Twitter} from 'lucide-react'
@@ -18,9 +18,7 @@ import {socialLinks} from "@/lib/constants/social-links";
 
 export default function Home() {
     return (
-        <div className="mx-auto flex min-h-screen w-full max-w-4xl gap-12 px-8">
-            <Nav />
-            <div className="flex h-min w-full flex-col gap-16 overflow-visible py-8 md:gap-24 md:py-20">
+
                 <main className="flex flex-col gap-16 md:gap-24">
                     {/* About Section */}
                     <div className="flex flex-col gap-4">
@@ -238,17 +236,7 @@ export default function Home() {
                     </div>
                 </main>
 
-                <footer className="flex justify-center mx-auto">
-          <span className="text-muted-foreground text-sm">
-            © 2025{' '}
-              <Link className="hover:opacity-90"
-                    href="https://caccamedia.com?utm_source=website&utm_medium=footer-link">
-              Caccamedia
-            </Link>
-          </span>
-                </footer>
-            </div>
-        </div>
+
     )
 }
 
