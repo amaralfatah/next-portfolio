@@ -1,3 +1,5 @@
+import {Card, CardContent} from "@/components/ui/card";
+
 const VaultPage = () => {
   const tools = [
     {
@@ -37,27 +39,31 @@ const VaultPage = () => {
       {/* Tools Grid */}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         {tools.map((tool) => (
-          <a
-            key={tool.id}
-            href={tool.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col gap-3 rounded-md border-2 border-input bg-accent p-4 hover:bg-accent/90 transition-colors"
-          >
-            <div className="relative w-full pt-[56.25%]">
-              <img
-                src={tool.image}
-                alt={tool.title}
-                className="absolute inset-0 rounded-md object-cover"
-                width={800}
-                height={450}
-              />
-            </div>
-            <div>
-              <h3 className="text-lg font-medium text-foreground">{tool.title}</h3>
-              <p className="text-sm text-muted-foreground">{tool.description}</p>
-            </div>
-          </a>
+          <Card key={tool.id} className="hover:bg-accent/90 transition-colors">
+            <CardContent>
+              <a
+                href={tool.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col gap-3 pt-6 "
+              >
+                <div className="relative w-full pt-[56.25%]">
+                  <img
+                    src={tool.image}
+                    alt={tool.title}
+                    className="absolute inset-0 rounded-md object-cover"
+                    width={800}
+                    height={450}
+                  />
+                </div>
+                <div>
+                  <h3 className="text-lg font-medium text-foreground">{tool.title}</h3>
+                  <p className="text-sm text-muted-foreground">{tool.description}</p>
+                </div>
+              </a>
+            </CardContent>
+          </Card>
+
         ))}
       </div>
     </div>

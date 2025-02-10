@@ -4,6 +4,8 @@ import Link from "next/link";
 import {buttonVariants} from "@/components/ui/button";
 import NewsletterForm from "@/components/newsletter-form";
 import {links} from '@/data/links';
+import {Card, CardContent, CardHeader} from "@/components/ui/card";
+
 
 const LinksPage = () => {
   return (
@@ -17,7 +19,7 @@ const LinksPage = () => {
       {/* Mobile Header */}
       <div className="flex flex-col items-center gap-2 md:hidden">
         <img
-          src="https://raw.githubusercontent.com/amaralfatah/my-gallery/main/portfolio/portfolio-inklusi-aisyiyah.png"
+          src="/images/logo-light.png"
           alt="Amar Al Fatah"
           className="rounded-full"
           width={72}
@@ -30,8 +32,8 @@ const LinksPage = () => {
       <div className="flex flex-col gap-16">
         <div className="flex w-full flex-col gap-4">
           {/* Latest Video Card */}
-          <div className="flex flex-col gap-3 rounded-md border-2 border-input bg-accent p-4">
-            <div className="flex items-center justify-between">
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between">
               <span className="text-foreground">Latest Video</span>
               <a
                 href="https://youtu.be/V8K6hiRWp18"
@@ -40,8 +42,8 @@ const LinksPage = () => {
                 <span>YouTube</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1"/>
               </a>
-            </div>
-            <div className="overflow-hidden rounded-md">
+            </CardHeader>
+            <CardContent className="overflow-hidden rounded-md">
               <div className="aspect-video">
                 <img
                   src="https://raw.githubusercontent.com/amaralfatah/my-gallery/main/portfolio/portfolio-inklusi-aisyiyah.png"
@@ -49,37 +51,29 @@ const LinksPage = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
+
 
           {/* Newsletter Signup */}
-          <div className="flex flex-col gap-3 rounded-md border-2 border-input bg-accent p-4">
-            <div className="flex flex-col gap-4">
-              <NewsletterForm/>
-            </div>
-          </div>
+          <NewsletterForm/>
 
           {/* All Links */}
           {links.map((link, index) => {
             const Icon = link.icon;
             return (
-              <div
-                key={index}
-                className="flex w-full items-center justify-between gap-4 rounded-md border-2 border-input bg-accent px-6 py-4"
-              >
-                <div className="flex items-center gap-6">
-                  <span className="text-muted-foreground">
-                    <Icon className="w-7 h-7"/>
-                  </span>
-                  <div className="flex flex-col">
-                    <span className="text-foreground">{link.title}</span>
-                    <span className="text-sm text-muted-foreground">
-                      {link.description}
-                    </span>
-                  </div>
+              <Card key={index} className="flex items-center space-x-4 p-4">
+                <Icon className="w-7 h-7"/>
+                <div className="flex-1 space-y-1">
+                  <p className="text-sm font-medium leading-none">
+                    {link.title}
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    {link.description}
+                  </p>
                 </div>
                 <Link href={link.url} className={buttonVariants({variant: "outline"})}>{link.buttonText}</Link>
-              </div>
+              </Card>
             );
           })}
         </div>

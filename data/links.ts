@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 
 export interface LinkItem {
+  id: number;
   icon: LucideIcon;
   title: string;
   description: string;
@@ -22,6 +23,7 @@ export interface LinkItem {
 export const links: LinkItem[] = [
   // Social Media Links
   {
+    id: 1,
     icon: Twitter,
     title: 'Twitter / X',
     description: "Sharing what I'm working on.",
@@ -29,6 +31,7 @@ export const links: LinkItem[] = [
     url: 'https://twitter.com/amaralfatah'
   },
   {
+    id: 2,
     icon: Instagram,
     title: 'Instagram',
     description: 'Behind the scenes and daily updates.',
@@ -36,6 +39,7 @@ export const links: LinkItem[] = [
     url: 'https://instagram.com/amaralfatah.me'
   },
   {
+    id: 3,
     icon: Linkedin,
     title: 'LinkedIn',
     description: 'Professional network and updates.',
@@ -44,6 +48,7 @@ export const links: LinkItem[] = [
   },
   // Main Links
   {
+    id: 4,
     icon: Mail,
     title: 'Contact me',
     description: "Reach out if you'd like to work together.",
@@ -51,6 +56,7 @@ export const links: LinkItem[] = [
     url: 'mailto:amaralfatah.me@gmail.com'
   },
   {
+    id: 5,
     icon: Calendar,
     title: 'Schedule a Call',
     description: "I'm always happy to chat with other developers and creators.",
@@ -58,6 +64,7 @@ export const links: LinkItem[] = [
     url: 'https://cal.link/cole'
   },
   {
+    id: 6,
     icon: Mail,
     title: 'Weekly Newsletter',
     description: "Insights on how I'm building my businesses.",
@@ -65,6 +72,7 @@ export const links: LinkItem[] = [
     url: '/letters?via=links'
   },
   {
+    id: 7,
     icon: Briefcase,
     title: 'Jobs',
     description: 'Join my team and build cool things.',
@@ -72,6 +80,7 @@ export const links: LinkItem[] = [
     url: '/jobs'
   },
   {
+    id: 8,
     icon: Droplet,
     title: 'Drops',
     description: 'Wallpapers, Notion templates, and more.',
@@ -79,6 +88,7 @@ export const links: LinkItem[] = [
     url: 'https://colecaccamise.com/drops?via=links'
   },
   {
+    id: 9,
     icon: Youtube,
     title: 'YouTube',
     description: 'Aesthetic tech videos.',
@@ -86,6 +96,7 @@ export const links: LinkItem[] = [
     url: 'https://www.youtube.com/@amaralfatah.m3'
   },
   {
+    id: 10,
     icon: Github,
     title: 'GitHub',
     description: 'Building software and tools.',

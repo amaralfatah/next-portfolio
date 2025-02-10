@@ -11,6 +11,11 @@ import {links} from "@/data/links";
 import {drops} from '@/data/drops';
 import {letters} from '@/data/letters';
 import NewsletterForm from "@/components/newsletter-form";
+import {Card} from "@/components/ui/card";
+import {ImageLink} from "@/components/link/image-link";
+import {ColLink} from "@/components/link/col-link";
+import {RowLink} from "@/components/link/row-link";
+import {VentureLink} from "@/components/link/venture-link";
 
 export default function Home() {
   return (
@@ -76,21 +81,8 @@ export default function Home() {
         </div>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col">
-            {ventures.map((venture) => (
-              <Link
-                key={venture.title}
-                href={venture.href}
-                target="_blank"
-                className="flex py-6 gap-4 items-center no-underline hover:bg-muted transition-all duration-200 rounded-md hover:px-3 hover:-mx-3"
-              >
-                <div className="flex flex-col gap-1">
-                                    <span className="flex items-center gap-1">
-                                    {venture.title}
-                                      <ExternalLink className="h-4 w-4"/>
-                                    </span>
-                  <span className="text-muted-foreground">{venture.description}</span>
-                </div>
-              </Link>
+            {ventures.map((item) => (
+              <VentureLink key={item.id} title={item.title} description={item.description} href={item.url}/>
             ))}
           </div>
         </div>
@@ -104,18 +96,8 @@ export default function Home() {
         </div>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col">
-            {letters.map((letter) => (
-              <Link
-                key={letter.title}
-                href={letter.url}
-                className="flex py-6 gap-4 items-center no-underline hover:bg-muted transition-all duration-200 rounded-md hover:px-3 hover:-mx-3"
-              >
-                <div
-                  className="flex w-full flex-col items-start justify-between gap-1 md:flex-row md:items-center">
-                  <span>{letter.title}</span>
-                  <span className="text-sm text-muted-foreground">{letter.date}</span>
-                </div>
-              </Link>
+            {letters.map((item) => (
+              <RowLink key={item.id} title={item.title} date={item.date} url={item.url}/>
             ))}
           </div>
           <Link
@@ -136,29 +118,9 @@ export default function Home() {
         </div>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col">
-            {drops.map((drop) => (
-              <Link
-                key={drop.title}
-                href={drop.href}
-                className="flex py-6 gap-4 items-center no-underline hover:bg-muted transition-all duration-200 rounded-md hover:px-3 hover:-mx-3"
-              >
-                <div className="h-16 w-16 overflow-hidden">
-                  <Image
-                    src={drop.image}
-                    alt={drop.title}
-                    width={512}
-                    height={512}
-                    className="h-full rounded-lg object-cover"
-                  />
-                </div>
-                <div className="flex flex-col">
-                  <span>{drop.title}</span>
-                  <span className="flex items-center gap-1 text-muted-foreground">
-                                                {drop.type} <span
-                    className="h-2 w-2 rounded-full bg-current"/> ${drop.price}
-                                              </span>
-                </div>
-              </Link>
+            {drops.map((item) => (
+              <ImageLink key={item.id} title={item.title} type={item.type} price={item.price} image={item.image}
+                         url={item.url}/>
             ))}
           </div>
           <Link
@@ -180,16 +142,7 @@ export default function Home() {
         <div className="flex flex-col gap-4">
           <div className="flex flex-col">
             {stacks.map((item) => (
-              <Link
-                key={item.title}
-                href={item.url}
-                className="flex py-6 gap-4 items-center no-underline hover:bg-muted transition-all duration-200 rounded-md hover:px-3 hover:-mx-3"
-              >
-                <div className="flex flex-col">
-                  <span>{item.title}</span>
-                  <span className="text-muted-foreground">{item.description}</span>
-                </div>
-              </Link>
+              <ColLink key={item.title} title={item.title} description={item.description} url={item.url}/>
             ))}
           </div>
           <Link
@@ -224,13 +177,15 @@ export default function Home() {
           {links.map((link) => {
             const Icon = link.icon;
             return (
-              <Link
-                key={link.url}
-                href={link.url}
-                className="flex h-12 w-12 items-center justify-center rounded-md border bg-muted text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors"
-              >
-                <Icon className="h-5 w-5"/>
-              </Link>
+              <Card className="hover:bg-secondary hover:text-foreground transition-colors">
+                <Link
+                  key={link.id}
+                  href={link.url}
+                  className="flex h-12 w-12 items-center justify-center"
+                >
+                  <Icon className="h-5 w-5"/>
+                </Link>
+              </Card>
             );
           })}
         </div>

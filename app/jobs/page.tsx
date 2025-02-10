@@ -1,4 +1,5 @@
 import {jobs} from '@/data/jobs'
+import {RowLink} from "@/components/link/row-link";
 
 const JobsPage = () => {
   return (
@@ -17,21 +18,8 @@ const JobsPage = () => {
         </div>
 
         <div className="flex flex-col divide-y divide-border/30">
-          {jobs.map((job) => (
-            <a
-              key={job.id}
-              className="flex py-6 gap-4 items-center no-underline hover:bg-muted transition-all duration-200 rounded-md hover:border-border hover:px-3 hover:-mx-3"
-              href={job.url}
-            >
-              <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <div className="flex flex-col gap-1">
-                  <span className="text-foreground font-medium">{job.title}</span>
-                </div>
-                <div className="flex flex-col gap-1 sm:items-end">
-                  <span className="text-sm text-muted-foreground">{job.location}</span>
-                </div>
-              </div>
-            </a>
+          {jobs.map((item) => (
+            <RowLink key={item.id} title={item.title} date={item.location} url={item.url}/>
           ))}
         </div>
       </div>

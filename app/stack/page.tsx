@@ -1,4 +1,5 @@
 import {stacks} from '@/data/stacks';
+import {ColLink} from "@/components/link/col-link";
 
 const StackPage = () => {
   return (
@@ -13,18 +14,7 @@ const StackPage = () => {
       <div className="flex flex-col gap-4">
         <div className="flex flex-col">
           {stacks.map((item) => (
-            <a
-              key={item.id}
-              href={item.url}
-              className="flex py-6 gap-4 items-center no-underline hover:bg-accent transition-all duration-200 rounded-md hover:border-input hover:px-3 hover:-mx-3"
-            >
-              <div className="flex flex-col">
-                <span className="text-foreground">{item.title}</span>
-                <span className="font-regular text-muted-foreground">
-                  {item.description}
-                </span>
-              </div>
-            </a>
+            <ColLink key={item.title} title={item.title} description={item.description} url={item.url}/>
           ))}
         </div>
       </div>

@@ -1,6 +1,7 @@
 // letters/page.tsx
 import {letters} from '@/data/letters'
 import NewsletterForm from "@/components/newsletter-form";
+import {RowLink} from "@/components/link/row-link";
 
 const NewsletterPage = () => {
 
@@ -26,20 +27,8 @@ const NewsletterPage = () => {
       <div className="flex flex-col gap-4">
         <span className="font-medium text-foreground">Past issues</span>
         <div className="flex flex-col">
-          {letters.map((issue, index) => (
-            <a
-              key={index}
-              className="flex py-6 gap-4 items-center no-underline hover:bg-accent transition-all duration-200 rounded-md hover:border-border hover:px-3 hover:-mx-3"
-              href={`/letters/${issue.title.toLowerCase().replace(/\s+/g, '-')}`}
-            >
-              <div
-                className="flex w-full flex-col items-start justify-between gap-1 md:flex-row md:items-center">
-                <span className="text-foreground">{issue.title}</span>
-                <span className="font-regular text-sm text-muted-foreground">
-                  {issue.date}
-                </span>
-              </div>
-            </a>
+          {letters.map((item) => (
+            <RowLink key={item.id} title={item.title} date={item.date} url={item.url}/>
           ))}
         </div>
       </div>
