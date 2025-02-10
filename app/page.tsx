@@ -177,9 +177,8 @@ export default function Home() {
           {links.map((link) => {
             const Icon = link.icon;
             return (
-              <Card className="hover:bg-secondary hover:text-foreground transition-colors">
+              <Card key={link.id} className="hover:bg-secondary hover:text-foreground transition-colors">
                 <Link
-                  key={link.id}
                   href={link.url}
                   className="flex h-12 w-12 items-center justify-center"
                 >
