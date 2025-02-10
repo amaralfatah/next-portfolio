@@ -6,7 +6,7 @@ import Link from 'next/link'
 import {ExternalLink} from 'lucide-react'
 
 import {featuredDrops, recentLetters, stackItems, ventures,} from '@/data/data'
-import {socialLinks} from "@/data/social-links";
+import {links} from "@/data/links";
 import NewsletterForm from "@/components/newsletter-form";
 
 export default function Home() {
@@ -30,10 +30,23 @@ export default function Home() {
             software.</p>
           <p className="text-muted-foreground">
             I enjoy sharing my experiences{' '}
-            <Link href="https://caccamise.link/youtube" className="text-foreground hover:opacity-90">through
+            <Link href="https://www.youtube.com/@amaralfatah.m3" className="text-foreground hover:opacity-90">through
               video</Link>{' '}
             and <Link href="/letters" className="text-foreground hover:opacity-90">written word</Link>.
           </p>
+        </div>
+        <div className="mt-4">
+          <Link
+            href="https://flowcv.com/resume/6afsv73o4s"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`inline-flex items-center justify-center px-4 py-2 rounded-md font-medium
+    bg-primary text-primary-foreground hover:bg-primary/90
+    transition-colors duration-200`}
+          >
+            Download Resume
+            <ExternalLink className="ml-2 h-4 w-4"/>
+          </Link>
         </div>
       </div>
 
@@ -204,8 +217,8 @@ export default function Home() {
             </Link>!
           </p>
         </div>
-        <div className="flex gap-4">
-          {socialLinks.map((link) => {
+        <div className="flex flex-wrap gap-4">
+          {links.map((link) => {
             const Icon = link.icon;
             return (
               <Link

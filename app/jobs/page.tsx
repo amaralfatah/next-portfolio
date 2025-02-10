@@ -14,7 +14,6 @@ const JobsPage = () => {
       <div className="flex flex-col gap-4">
         <div className="flex items-center justify-between">
           <span className="font-medium text-foreground">Open positions</span>
-          <span className="text-sm text-muted-foreground">{jobs.length} positions</span>
         </div>
 
         <div className="flex flex-col divide-y divide-border/30">
