@@ -1,12 +1,21 @@
-// components/DesktopNav.tsx
-'use client'
+"use client"
 
+import {usePathname} from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
-import {ModeToggle} from "@/components/ModeToggle";
+import {ModeToggle} from "@/components/ModeToggle"
 import {menuLinks} from "@/lib/constants/menu-links"
 
 export function DesktopNav() {
+    const pathname = usePathname()
+
+    const isActiveLink = (href: string) => {
+        if (href === '/') {
+            return pathname === href
+        }
+        return pathname.startsWith(href)
+    }
+
     return (
         <aside className="sticky top-0 hidden h-screen w-48 py-20 md:block">
             <nav className="flex h-full w-full flex-col gap-12 overflow-visible" aria-label="Desktop navigation">
@@ -32,7 +41,7 @@ export function DesktopNav() {
                             <Link
                                 href={link.href}
                                 className={`flex items-center gap-2 py-1 transition-colors ${
-                                    link.href === "/"
+                                    isActiveLink(link.href)
                                         ? "text-foreground"
                                         : "text-muted-foreground hover:text-foreground"
                                 }`}

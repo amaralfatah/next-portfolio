@@ -22,7 +22,7 @@ export const recentLetters = [
     {
         title: "F*** The Quick Wins",
         date: "February 2, 2025",
-        href: "/letters/f-the-quick-wins"
+        href: "/letters/how-i-started-taking-action"
     },
     {
         title: "Everything Takes 10x Longer Than You Think",
