@@ -1,10 +1,10 @@
 export const menuLinks = [
-    { href: '/', name: 'Home' },
-    { href: '/#connect', name: 'Contact' },
-    { href: '/letters', name: 'Letters' },
-    { href: '/drops', name: 'Drops' },
-    { href: '/stack', name: 'Stack' },
-    { href: '/vault', name: 'Vault' },
-    { href: '/links', name: 'Links' },
-    { href: '/jobs', name: 'Jobs' },
+  {url: '/', name: 'Home'},
+  {url: '/#connect', name: 'Contact'},
+  {url: '/letters', name: 'Letters'},
+  {url: '/drops', name: 'Drops'},
+  {url: '/stack', name: 'Stack'},
+  {url: '/vault', name: 'Vault'},
+  {url: '/links', name: 'Links'},
+  {url: '/jobs', name: 'Jobs'},
 ]

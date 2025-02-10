@@ -2,7 +2,7 @@
 import React from 'react'
 import Link from "next/link";
 import NewsletterForm from "@/components/newsletter-form";
-import {articles} from "@/data/articles";
+import {letters} from "@/data/letters";
 
 export default function LettersLayout({
                                         children,
@@ -32,7 +32,7 @@ export default function LettersLayout({
         <span className="text-2xl font-medium text-foreground">You may also like</span>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col">
-            {articles.map((related, index) => (
+            {letters.map((related, index) => (
               <Link
                 key={index}
                 href={`/letters/${related.slug}`}

@@ -39,9 +39,9 @@ export function DesktopNav() {
           {menuLinks.map((link) => (
             <li key={link.name}>
               <Link
-                href={link.href}
+                href={link.url}
                 className={`flex items-center gap-2 py-1 transition-colors ${
-                  isActiveLink(link.href)
+                  isActiveLink(link.url)
                     ? "text-foreground"
                     : "text-muted-foreground hover:text-foreground"
                 }`}

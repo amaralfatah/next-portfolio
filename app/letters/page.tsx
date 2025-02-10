@@ -1,5 +1,5 @@
 // letters/page.tsx
-import {articles} from '@/data/articles'
+import {letters} from '@/data/letters'
 import NewsletterForm from "@/components/newsletter-form";
 
 const NewsletterPage = () => {
@@ -26,7 +26,7 @@ const NewsletterPage = () => {
       <div className="flex flex-col gap-4">
         <span className="font-medium text-foreground">Past issues</span>
         <div className="flex flex-col">
-          {articles.map((issue, index) => (
+          {letters.map((issue, index) => (
             <a
               key={index}
               className="flex py-6 gap-4 items-center no-underline hover:bg-accent transition-all duration-200 rounded-md hover:border-border hover:px-3 hover:-mx-3"

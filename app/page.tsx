@@ -5,8 +5,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {ExternalLink} from 'lucide-react'
 
-import {featuredDrops, recentLetters, stackItems, ventures,} from '@/data/data'
+import {ventures,} from '@/data/data'
+import {stacks} from '@/data/stacks';
 import {links} from "@/data/links";
+import {drops} from '@/data/drops';
+import {letters} from '@/data/letters';
 import NewsletterForm from "@/components/newsletter-form";
 
 export default function Home() {
@@ -101,10 +104,10 @@ export default function Home() {
         </div>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col">
-            {recentLetters.map((letter) => (
+            {letters.map((letter) => (
               <Link
                 key={letter.title}
-                href={letter.href}
+                href={letter.url}
                 className="flex py-6 gap-4 items-center no-underline hover:bg-muted transition-all duration-200 rounded-md hover:px-3 hover:-mx-3"
               >
                 <div
@@ -133,7 +136,7 @@ export default function Home() {
         </div>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col">
-            {featuredDrops.map((drop) => (
+            {drops.map((drop) => (
               <Link
                 key={drop.title}
                 href={drop.href}
@@ -176,10 +179,10 @@ export default function Home() {
         </div>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col">
-            {stackItems.map((item) => (
+            {stacks.map((item) => (
               <Link
                 key={item.title}
-                href={item.href}
+                href={item.url}
                 className="flex py-6 gap-4 items-center no-underline hover:bg-muted transition-all duration-200 rounded-md hover:px-3 hover:-mx-3"
               >
                 <div className="flex flex-col">
@@ -222,8 +225,8 @@ export default function Home() {
             const Icon = link.icon;
             return (
               <Link
-                key={link.href}
-                href={link.href}
+                key={link.url}
+                href={link.url}
                 className="flex h-12 w-12 items-center justify-center rounded-md border bg-muted text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors"
               >
                 <Icon className="h-5 w-5"/>

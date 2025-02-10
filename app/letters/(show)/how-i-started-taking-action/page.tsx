@@ -1,6 +1,6 @@
 import React from 'react';
 import {ArrowLeft, Copy} from 'lucide-react';
-import {articles} from "@/data/articles";
+import {letters} from "@/data/letters";
 
 const HowIStartedTakingActionPage = () => {
   return (
@@ -18,11 +18,11 @@ const HowIStartedTakingActionPage = () => {
       <div className="flex flex-col gap-2">
         <div className="flex flex-col gap-1">
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl text-foreground">{articles[1].title}</h1>
+            <h1 className="text-2xl text-foreground">{letters[1].title}</h1>
           </div>
-          <span className="text-muted-foreground">{articles[1].subtitle}</span>
+          <span className="text-muted-foreground">{letters[1].subtitle}</span>
         </div>
-        <span className="text-sm text-muted-foreground">{articles[1].date}</span>
+        <span className="text-sm text-muted-foreground">{letters[1].date}</span>
       </div>
 
       {/* Content */}

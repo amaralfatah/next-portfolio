@@ -78,7 +78,7 @@ const LinksPage = () => {
                     </span>
                   </div>
                 </div>
-                <Link href={link.href} className={buttonVariants({variant: "outline"})}>{link.buttonText}</Link>
+                <Link href={link.url} className={buttonVariants({variant: "outline"})}>{link.buttonText}</Link>
               </div>
             );
           })}

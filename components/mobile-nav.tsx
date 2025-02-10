@@ -44,9 +44,9 @@ export function MobileNav() {
             className="delay-50 transition-opacity duration-300 ease-in-out"
           >
             <Link
-              href={link.href}
+              href={link.url}
               className={`flex items-center gap-2 py-1 transition-colors ${
-                link.href === "/"
+                link.url === "/"
                   ? "text-foreground"
                   : "text-muted-foreground hover:text-foreground"
               }`}
