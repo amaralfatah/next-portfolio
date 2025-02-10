@@ -23,7 +23,7 @@ const VideoEditorPage = () => {
             <h1 className="text-2xl text-foreground ">Video Editor</h1>
           </div>
           <span className="text-muted-foreground">
-            Help edit videos for the Cole Caccamise channel
+            Help edit videos for the Amar Al Fatah channel
           </span>
         </div>
 
@@ -51,8 +51,9 @@ const VideoEditorPage = () => {
             the channel's revenue.</p>
 
           <h4 className="text-foreground font-medium">How to apply</h4>
-          <p>Reach out to Cole at <a href="mailto:cole@caccamedia.com"
-                                     className="text-primary hover:underline">cole@caccamedia.com</a> with the job title
+          <p>Reach out to Amar at <a href="mailto:amaralfatah.me@gmail.com"
+                                     className="text-primary hover:underline">amaralfatah.me@gmail.com</a> with the job
+            title
             in the subject line.</p>
           <p>Send me links to your best work and ideas you have for the channel.</p>
           <p>If you're a good fit we'll schedule a call and plan a trial run of 1-2 videos (that will be paid).</p>

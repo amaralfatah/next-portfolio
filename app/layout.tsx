@@ -11,45 +11,45 @@ import Footer from "@/components/footer";
 const inter = Inter({subsets: ['latin']})
 
 export const metadata: Metadata = {
-    title: 'Cole Caccamise - Software Engineer & Entrepreneur',
-    description: 'Cole Caccamise is a software engineer and entrepreneur.',
+  title: 'Amar Al Fatah - Software Engineer & Entrepreneur',
+  description: 'Amar Al Fatah is a software engineer and entrepreneur.',
 }
 
 export default function RootLayout({
-                                       children,
+                                     children,
                                    }: {
-    children: React.ReactNode
+  children: React.ReactNode
 }) {
-    return (
-        <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-        <body className={`${inter.className} min-h-screen antialiased bg-background text-foreground overflow-x-hidden`}>
+  return (
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <body className={`${inter.className} min-h-screen antialiased bg-background text-foreground overflow-x-hidden`}>
 
-        <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-        >
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+    >
 
-            <MobileNav/>
+      <MobileNav/>
 
-            <div className="mx-auto flex min-h-screen w-full max-w-4xl gap-12 px-8">
+      <div className="mx-auto flex min-h-screen w-full max-w-4xl gap-12 px-8">
 
-                <DesktopNav/>
+        <DesktopNav/>
 
-                <div className="flex h-min w-full flex-col gap-16 py-8 md:gap-24 md:py-20">
+        <div className="flex h-min w-full flex-col gap-16 py-8 md:gap-24 md:py-20">
 
-                    {children}
+          {children}
 
-                    <Footer/>
+          <Footer/>
 
-                </div>
+        </div>
 
-            </div>
-        </ThemeProvider>
+      </div>
+    </ThemeProvider>
 
 
-        </body>
-        </html>
-    )
+    </body>
+    </html>
+  )
 }

@@ -2,9 +2,9 @@
 
 export const ventures = [
   {
-    title: "YouTube | Cole Caccamise",
+    title: "YouTube | Amar Al Fatah",
     description: "Aesthetic tech videos.",
-    href: "https://youtube.com/@colecaccamise"
+    href: "https://www.youtube.com/@amaralfatah.m3"
   },
   {
     title: "Hyperapta Studios",

@@ -192,8 +192,8 @@ export default function Home() {
           <span className="font-medium">Connect</span>
           <p className="text-muted-foreground">
             Reach me at{' '}
-            <Link href="mailto:cole@colecaccamise.com" className="text-foreground hover:opacity-90">
-              cole@colecaccamise.com
+            <Link href="mailto:amaralfatah.me@gmail.com" className="text-foreground hover:opacity-90">
+              amaralfatah.me@gmail.com
             </Link>{' '}
             or connect on social media below.
           </p>

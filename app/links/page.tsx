@@ -12,7 +12,7 @@ const LinksPage = () => {
       title: 'Contact me',
       description: "Reach out if you'd like to work together.",
       buttonText: 'Email',
-      href: 'mailto:cole@colecaccamise.com'
+      href: 'mailto:amaralfatah.me@gmail.com'
     },
     {
       icon: <Calendar className="w-7 h-7"/>,
@@ -104,12 +104,12 @@ const LinksPage = () => {
       <div className="flex flex-col items-center gap-2 md:hidden">
         <img
           src="https://raw.githubusercontent.com/amaralfatah/my-gallery/main/portfolio/portfolio-inklusi-aisyiyah.png"
-          alt="Cole Caccamise"
+          alt="Amar Al Fatah"
           className="rounded-full"
           width={72}
           height={72}
         />
-        <h2 className="text-foreground">Cole Caccamise</h2>
+        <h2 className="text-foreground">Amar Al Fatah</h2>
         <span className="text-muted-foreground">Software Engineer & Entrepreneur</span>
       </div>
 
