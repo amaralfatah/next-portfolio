@@ -16,6 +16,7 @@ import {ImageLink} from "@/components/link/image-link";
 import {ColLink} from "@/components/link/col-link";
 import {RowLink} from "@/components/link/row-link";
 import {VentureLink} from "@/components/link/venture-link";
+import ContactForm from "@/components/contact-form";
 
 export default function Home() {
   return (
@@ -156,24 +157,15 @@ export default function Home() {
       </div>
 
       {/* Connect Section */}
-      <div id="connect" className="flex flex-col gap-4">
+      <div id="connect" className="flex flex-col gap-6">
         <div className="flex flex-col gap-2">
           <span className="font-medium">Connect</span>
           <p className="text-muted-foreground">
-            Reach me at{' '}
-            <Link href="mailto:amaralfatah.me@gmail.com" className="text-foreground hover:opacity-90">
-              amaralfatah.me@gmail.com
-            </Link>{' '}
-            or connect on social media below.
-          </p>
-          <p className="text-muted-foreground">
-            I enjoy meeting fellow developers and creators, so feel free to{' '}
-            <Link href="https://cal.link/cole" className="text-foreground hover:opacity-90">
-              schedule a quick call
-            </Link>!
+            I'm always excited to meet fellow developers and creators. Drop me a message or find me on social media.
           </p>
         </div>
-        <div className="flex flex-wrap gap-4">
+        <ContactForm/>
+        <div className="flex flex-wrap gap-2">
           {links.map((link) => {
             const Icon = link.icon;
             return (
