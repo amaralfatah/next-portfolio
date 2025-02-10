@@ -7,7 +7,7 @@ import {ExternalLink} from 'lucide-react'
 
 import {featuredDrops, recentLetters, stackItems, ventures,} from '@/data/data'
 import {socialLinks} from "@/data/social-links";
-import {NewsletterForm} from "@/components/newsletter-form";
+import NewsletterForm from "@/components/newsletter-form";
 
 export default function Home() {
   return (
