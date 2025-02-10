@@ -36,7 +36,7 @@ const NowNotHowPage = () => {
         <div className="overflow-hidden rounded-md bg-card">
           <div className="aspect-video">
             <img
-              src="/images/logo-light.png"
+              src="/images/avatar.jpeg"
               alt="Video thumbnail"
               className="w-full h-full object-cover"
             />

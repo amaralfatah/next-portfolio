@@ -25,7 +25,7 @@ export function ImageLink({title, type, price, image, url}: ImageLinkProps) {
       <div className="flex flex-col">
         <span>{title}</span>
         <span className="flex items-center gap-1 text-muted-foreground">
-          {type} <span className="h-2 w-2 rounded-full bg-current"/> ${price}
+          {type} <span className="h-1 w-1 rounded-full bg-current"/> ${price}
         </span>
       </div>
     </BaseLink>

@@ -22,7 +22,7 @@ export function DesktopNav() {
         <div className="flex w-full flex-col items-start gap-4 text-left">
           <Image
             alt="Amar Al Fatah"
-            src="/images/logo-light.png"
+            src="/images/avatar.jpeg"
             width={72}
             height={72}
             className="rounded-full"

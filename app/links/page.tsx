@@ -19,7 +19,7 @@ const LinksPage = () => {
       {/* Mobile Header */}
       <div className="flex flex-col items-center gap-2 md:hidden">
         <img
-          src="/images/logo-light.png"
+          src="/images/avatar.jpeg"
           alt="Amar Al Fatah"
           className="rounded-full"
           width={72}

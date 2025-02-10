@@ -25,7 +25,7 @@ export default function Home() {
       <div className="flex flex-col gap-4">
         <div className="block md:hidden">
           <Image
-            src="/images/logo-light.png"
+            src="/images/avatar.jpeg"
             alt="Amar Al Fatah"
             width={56}
             height={56}
