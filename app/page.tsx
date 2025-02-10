@@ -119,7 +119,7 @@ export default function Home() {
         </div>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col">
-            {drops.map((item) => (
+            {drops.slice(0, 3).map((item) => (
               <ImageLink key={item.id} title={item.title} type={item.type} price={item.price} image={item.image}
                          url={item.url}/>
             ))}

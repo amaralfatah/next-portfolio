@@ -11,6 +11,11 @@ interface ImageLinkProps {
 }
 
 export function ImageLink({title, type, price, image, url}: ImageLinkProps) {
+
+  const formatNumber = (num: number) => {
+    return new Intl.NumberFormat('id-ID').format(num);
+  };
+
   return (
     <BaseLink href={url}>
       <div className="h-16 w-16 overflow-hidden">
@@ -24,9 +29,15 @@ export function ImageLink({title, type, price, image, url}: ImageLinkProps) {
       </div>
       <div className="flex flex-col">
         <span>{title}</span>
-        <span className="flex items-center gap-1 text-muted-foreground">
-          {type} <span className="h-1 w-1 rounded-full bg-current"/> ${price}
-        </span>
+        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+          <span className="font-medium">
+            {type}
+          </span>
+          <span className="h-1 w-1 rounded-full bg-current"/>
+          <span className="font-medium">
+            Rp{formatNumber(price)}
+          </span>
+        </div>
       </div>
     </BaseLink>
   );
