@@ -15,19 +15,13 @@ import {ColLink} from "@/components/link/col-link"
 import {RowLink} from "@/components/link/row-link"
 import {VentureLink} from "@/components/link/venture-link"
 import ContactForm from "@/components/contact-form"
-import PortfolioCard from "@/components/PortfolioCard";
-import {portfolios} from "@/data/portfolios";
 import ViewAllLink from "@/components/link/view-all-link";
 import SectionHeader from "@/components/home/section-header";
-import {timeline} from "@/data/timelines";
-import TimelineJourney from "@/components/home/timeline-journey";
+import ExperienceList from "@/components/experience/experience-list";
+import ProjectGrid from "@/components/project/project-grid";
 
 
 export default function Home() {
-
-  const recentProjects = [...portfolios]
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .slice(0, 4);
 
   return (
     <main className="flex flex-col gap-16 md:gap-24">
@@ -68,79 +62,68 @@ export default function Home() {
       {/* Projects Section */}
       <section className="space-y-6">
         <SectionHeader title="Featured Projects" description="Recent works and experiments"/>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {recentProjects.slice(0, 2).map((project) => (
-            <PortfolioCard
-              key={project.id}
-              portfolio={project}
-            />
-          ))}
-        </div>
-        <ViewAllLink href="/projects"/>
+        <ProjectGrid limit={2}/>
+        <ViewAllLink href="/project"/>
       </section>
 
       {/* Timeline Section */}
       <section className="space-y-6">
         <SectionHeader title="Journey" description="Professional milestones"/>
-        <div className="space-y-0">
-          {timeline.map((item) => (
-            <TimelineJourney key={item.id} item={item}/>
-          ))}
-        </div>
+        <ExperienceList/>
         <ViewAllLink href="/journey"/>
       </section>
 
       {/* Ventures Section */}
       <section className="flex flex-col gap-4">
         <SectionHeader title="Ventures" description="Businesses I'm actively working on"/>
-        <div className="flex flex-col gap-4">
-          <div className="flex flex-col">
-            {ventures.map((item) => (
-              <VentureLink key={item.id} title={item.title} description={item.description} href={item.url}/>
-            ))}
-          </div>
-          <ViewAllLink href="/ventures"/>
+
+        <div className="flex flex-col">
+          {ventures.map((item) => (
+            <VentureLink key={item.id} title={item.title} description={item.description} href={item.url}/>
+          ))}
         </div>
+        <ViewAllLink href="/ventures"/>
+
       </section>
 
       {/* Recent Letters */}
       <section className="flex flex-col gap-4">
         <SectionHeader title="Recent Letters" description="Writing about my experiences and learnings"/>
-        <div className="flex flex-col gap-4">
-          <div className="flex flex-col">
-            {letters.map((item) => (
-              <RowLink key={item.id} title={item.title} date={item.date} url={item.url}/>
-            ))}
-          </div>
-          <ViewAllLink href="/letters"/>
+
+        <div className="flex flex-col">
+          {letters.map((item) => (
+            <RowLink key={item.id} title={item.title} date={item.date} url={item.url}/>
+          ))}
         </div>
+        <ViewAllLink href="/letters"/>
+
       </section>
 
       {/* Featured Drops */}
       <section className="flex flex-col gap-4">
         <SectionHeader title="Featured Drops" description="Premium digital products I've created recently"/>
-        <div className="flex flex-col gap-4">
-          <div className="flex flex-col">
-            {drops.slice(0, 3).map((item) => (
-              <ImageLink key={item.id} title={item.title} type={item.type} price={item.price} image={item.image}
-                         url={item.url}/>
-            ))}
-          </div>
-          <ViewAllLink href="/drops"/>
+
+        <div className="flex flex-col">
+          {drops.slice(0, 3).map((item) => (
+            <ImageLink key={item.id} title={item.title} type={item.type} price={item.price} image={item.image}
+                       url={item.url}/>
+          ))}
         </div>
+        <ViewAllLink href="/drops"/>
+
       </section>
 
       {/* Stack Section */}
       <section className="flex flex-col gap-4">
         <SectionHeader title="Stack" description="Tools and products I use daily"/>
-        <div className="flex flex-col gap-4">
-          <div className="flex flex-col">
-            {stacks.map((item) => (
-              <ColLink key={item.title} title={item.title} description={item.description} url={item.url}/>
-            ))}
-          </div>
-          <ViewAllLink href="/stack"/>
+
+        <div className="flex flex-col">
+          {stacks.map((item) => (
+            <ColLink key={item.title} title={item.title} description={item.description} url={item.url}/>
+          ))}
         </div>
+        <ViewAllLink href="/stack"/>
+
       </section>
 
       {/* Connect Section */}

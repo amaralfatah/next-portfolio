@@ -1,17 +1,7 @@
-// data/portfolios.ts
-export interface Portfolio {
-  id: number;
-  name: string;
-  description: string;
-  image: string;
-  date: string;
-  link: string | null;
-  website: string | null;
-  github: string | null;
-  stack: string[];
-}
+// data/project.ts
+import {Project} from "@/types/project";
 
-export const portfolios: Portfolio[] = [
+export const projects: Project[] = [
   {
     id: 1,
     name: "Trebez App",
