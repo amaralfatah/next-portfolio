@@ -7,8 +7,11 @@ type ProjectGridProps = {
 }
 
 const ProjectGrid: FC<ProjectGridProps> = ({limit}) => {
-  const displayedProjects = limit ? projects.slice(0, limit) : projects;
 
+  const displayedProjects = [...projects]
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, limit || projects.length);
+  
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       {displayedProjects.map((item) => (

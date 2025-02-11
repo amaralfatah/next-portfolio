@@ -11,7 +11,6 @@ import SectionHeader from "@/components/home/SectionHeader";
 import ExperienceList from "@/components/experience/ExperienceList";
 import ProjectGrid from "@/components/project/ProjectGrid";
 import StackList from "@/components/stack/StackList";
-import LetterList from "@/components/letter/LetterList";
 import DropList from "@/components/drop/DropList";
 
 
@@ -85,14 +84,14 @@ export default function Home() {
       </section>
 
       {/* Blog Posts */}
-      <section className="flex flex-col gap-4">
-        <SectionHeader
-          title="Latest Posts"
-          description="Sharing what I learn about coding and tech"
-        />
-        <LetterList limit={3}/>
-        <ViewAllLink href="/letters"/>
-      </section>
+      {/*<section className="flex flex-col gap-4">*/}
+      {/*  <SectionHeader*/}
+      {/*    title="Latest Posts"*/}
+      {/*    description="Sharing what I learn about coding and tech"*/}
+      {/*  />*/}
+      {/*  <LetterList limit={3}/>*/}
+      {/*  <ViewAllLink href="/letters"/>*/}
+      {/*</section>*/}
 
       {/* Projects Showcase */}
       <section className="flex flex-col gap-4">

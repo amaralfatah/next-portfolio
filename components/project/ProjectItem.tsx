@@ -27,6 +27,7 @@ const ProjectItem: FC<ProjectItemProps> = ({project}) => {
             fill
             className="object-cover transition-all duration-500 ease-out group-hover:scale-105"
             loading="lazy"
+            sizes="100"
           />
           <div
             className="absolute inset-0 bg-gradient-to-t from-background/80 to-background/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
