@@ -1,5 +1,4 @@
 import React from 'react';
-import {ArrowLeft} from 'lucide-react';
 
 const DevelopmentPage = () => {
   const categories = {
@@ -123,13 +122,6 @@ const DevelopmentPage = () => {
 
   return (
     <div className="flex flex-col gap-8">
-      {/* Back Button */}
-      <a href="/stack" className="flex items-center gap-1 text-muted-foreground hover:text-foreground group">
-        <span className="group-hover:-translate-x-1 transition-transform">
-          <ArrowLeft className="w-4 h-4"/>
-        </span>
-        Back
-      </a>
 
       {/* Header */}
       <div className="flex flex-col gap-4 border-b border-border pb-8">
