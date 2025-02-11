@@ -69,7 +69,7 @@ export default function Home() {
       {/* Timeline Section */}
       <section className="space-y-6">
         <SectionHeader title="Journey" description="Professional milestones"/>
-        <ExperienceList/>
+        <ExperienceList limit={2}/>
         <ViewAllLink href="/journey"/>
       </section>
 

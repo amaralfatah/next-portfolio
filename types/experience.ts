@@ -1,6 +1,6 @@
 // 1. types/experience.ts
 type Experience = {
-  id: string;
+  id: number;
   year: string;
   role: string;
   companyName: string;
