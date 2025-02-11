@@ -1,7 +1,6 @@
 // letters/page.tsx
-import {letters} from '@/data/letters'
 import NewsletterForm from "@/components/newsletter-form";
-import {RowLink} from "@/components/link/row-link";
+import LetterList from "@/components/letter/LetterList";
 
 const NewsletterPage = () => {
 
@@ -26,11 +25,7 @@ const NewsletterPage = () => {
       {/* Past Issues Section */}
       <div className="flex flex-col gap-4">
         <span className="font-medium text-foreground">Past issues</span>
-        <div className="flex flex-col">
-          {letters.map((item) => (
-            <RowLink key={item.id} title={item.title} date={item.date} url={item.url}/>
-          ))}
-        </div>
+        <LetterList/>
       </div>
     </div>
   );

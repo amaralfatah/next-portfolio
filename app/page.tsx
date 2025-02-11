@@ -3,29 +3,22 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import {ExternalLink} from 'lucide-react'
-
-import {ventures} from '@/data/ventures'
-import {stacks} from '@/data/stacks'
 import {links} from "@/data/links"
-import {drops} from '@/data/drops'
-import {letters} from '@/data/letters'
 import {Card} from "@/components/ui/card"
-import {ImageLink} from "@/components/link/image-link"
-import {ColLink} from "@/components/link/col-link"
-import {RowLink} from "@/components/link/row-link"
-import {VentureLink} from "@/components/link/venture-link"
 import ContactForm from "@/components/contact-form"
 import ViewAllLink from "@/components/link/view-all-link";
 import SectionHeader from "@/components/home/section-header";
 import ExperienceList from "@/components/experience/experience-list";
 import ProjectGrid from "@/components/project/project-grid";
+import StackList from "@/components/stack/StackList";
+import LetterList from "@/components/letter/LetterList";
+import DropList from "@/components/drop/DropList";
 
 
 export default function Home() {
-
   return (
     <main className="flex flex-col gap-16 md:gap-24">
-      {/* About Section */}
+      {/* Hero Section */}
       <section className="flex flex-col gap-4">
         <div className="block md:hidden">
           <Image
@@ -38,12 +31,14 @@ export default function Home() {
         </div>
         <div className="flex flex-col gap-2">
           <span className="font-medium">About</span>
-          <p className="text-muted-foreground">A design-focused engineer who is passionate about building software.</p>
+          <p className="text-muted-foreground">A mobile & web developer who loves creating user-friendly apps that solve
+            real problems. Currently building cool stuff with Flutter and Laravel!</p>
           <p className="text-muted-foreground">
-            I enjoy sharing my experiences{' '}
-            <Link href="https://www.youtube.com/@amaralfatah.m3" className="text-foreground hover:opacity-90">through
-              video</Link>{' '}
-            and <Link href="/letters" className="text-foreground hover:opacity-90">written word</Link>.
+            I share my coding journey and tech tips{' '}
+            <Link href="https://www.youtube.com/@amaralfatah.m3" className="text-foreground hover:opacity-90">on
+              YouTube</Link>{' '}
+            and through my{' '}
+            <Link href="/letters" className="text-foreground hover:opacity-90">blog posts</Link>.
           </p>
         </div>
         <div className="mt-4">
@@ -53,83 +48,65 @@ export default function Home() {
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center px-4 py-2 rounded-md font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-200"
           >
-            Download Resume
+            Check out my Resume
             <ExternalLink className="ml-2 h-4 w-4"/>
           </Link>
         </div>
       </section>
 
-      {/* Projects Section */}
+      {/* Featured Projects */}
       <section className="space-y-6">
-        <SectionHeader title="Featured Projects" description="Recent works and experiments"/>
+        <SectionHeader
+          title="Featured Projects"
+          description="Here are some cool apps I've built recently"
+        />
         <ProjectGrid limit={2}/>
         <ViewAllLink href="/project"/>
       </section>
 
-      {/* Timeline Section */}
+      {/* Experience */}
       <section className="space-y-6">
-        <SectionHeader title="Journey" description="Professional milestones"/>
+        <SectionHeader
+          title="My Journey"
+          description="Places where I've learned and grown as a developer"
+        />
         <ExperienceList limit={2}/>
         <ViewAllLink href="/journey"/>
       </section>
 
-      {/* Ventures Section */}
+      {/* Skills & Tools */}
       <section className="flex flex-col gap-4">
-        <SectionHeader title="Ventures" description="Businesses I'm actively working on"/>
-
-        <div className="flex flex-col">
-          {ventures.map((item) => (
-            <VentureLink key={item.id} title={item.title} description={item.description} href={item.url}/>
-          ))}
-        </div>
-        <ViewAllLink href="/ventures"/>
-
+        <SectionHeader
+          title="Tech Stack"
+          description="Technologies and tools I work with daily"
+        />
+        <StackList limit={3}/>
+        <ViewAllLink href="/stack"/>
       </section>
 
-      {/* Recent Letters */}
+      {/* Blog Posts */}
       <section className="flex flex-col gap-4">
-        <SectionHeader title="Recent Letters" description="Writing about my experiences and learnings"/>
-
-        <div className="flex flex-col">
-          {letters.map((item) => (
-            <RowLink key={item.id} title={item.title} date={item.date} url={item.url}/>
-          ))}
-        </div>
+        <SectionHeader
+          title="Latest Posts"
+          description="Sharing what I learn about coding and tech"
+        />
+        <LetterList limit={3}/>
         <ViewAllLink href="/letters"/>
-
       </section>
 
-      {/* Featured Drops */}
+      {/* Projects Showcase */}
       <section className="flex flex-col gap-4">
         <SectionHeader title="Featured Drops" description="Premium digital products I've created recently"/>
-
-        <div className="flex flex-col">
-          {drops.slice(0, 3).map((item) => (
-            <ImageLink key={item.id} title={item.title} type={item.type} price={item.price} image={item.image}
-                       url={item.url}/>
-          ))}
-        </div>
+        <DropList limit={3}/>
         <ViewAllLink href="/drops"/>
-
       </section>
 
-      {/* Stack Section */}
-      <section className="flex flex-col gap-4">
-        <SectionHeader title="Stack" description="Tools and products I use daily"/>
-
-        <div className="flex flex-col">
-          {stacks.map((item) => (
-            <ColLink key={item.title} title={item.title} description={item.description} url={item.url}/>
-          ))}
-        </div>
-        <ViewAllLink href="/stack"/>
-
-      </section>
-
-      {/* Connect Section */}
+      {/* Connect */}
       <section id="connect" className="flex flex-col gap-4">
-        <SectionHeader title="Connect"
-                       description="I'm always excited to meet fellow developers and creators. Drop me a message or find me on social media."/>
+        <SectionHeader
+          title="Let's Connect!"
+          description="Always happy to chat about code, tech, or potential collaborations. Drop me a message!"
+        />
         <ContactForm/>
         <div className="flex flex-wrap gap-2">
           {links.map((link) => {

@@ -1,6 +1,5 @@
 import React from 'react';
-import {ImageLink} from "@/components/link/image-link";
-import {drops} from "@/data/drops";
+import DropList from "@/components/drop/DropList";
 
 const DropsPage = () => {
 
@@ -15,12 +14,7 @@ const DropsPage = () => {
       {/* Products List */}
       <div className="flex flex-col gap-4">
         <span className="font-medium text-foreground">All drops</span>
-        <div className="flex flex-col">
-          {drops.map((item) => (
-            <ImageLink key={item.id} title={item.title} type={item.type} price={item.price} image={item.image}
-                       url={item.url}/>
-          ))}
-        </div>
+        <DropList/>
       </div>
 
       {/* Affiliate Link */}

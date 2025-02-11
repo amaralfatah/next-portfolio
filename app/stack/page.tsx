@@ -1,5 +1,4 @@
-import {stacks} from '@/data/stacks';
-import {ColLink} from "@/components/link/col-link";
+import StackList from "@/components/stack/StackList";
 
 const StackPage = () => {
   return (
@@ -12,11 +11,7 @@ const StackPage = () => {
 
       {/* Stack List */}
       <div className="flex flex-col gap-4">
-        <div className="flex flex-col">
-          {stacks.map((item) => (
-            <ColLink key={item.title} title={item.title} description={item.description} url={item.url}/>
-          ))}
-        </div>
+        <StackList/>
       </div>
     </div>
   );
