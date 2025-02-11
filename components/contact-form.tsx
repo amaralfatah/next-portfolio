@@ -77,7 +77,7 @@ const ContactForm = () => {
 
   return (
     <div className="w-full">
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <Input
           type="text"
           name="name"

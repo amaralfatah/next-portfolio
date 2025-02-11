@@ -1,4 +1,4 @@
-// lib/constants/data.ts
+// lib/constants/ventures.ts
 
 export const ventures = [
   {
