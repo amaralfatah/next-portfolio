@@ -50,7 +50,7 @@ const ExperienceItem: FC<ExperienceItemProps> = ({experience, isLast = false}) =
                 </div>
               </div>
 
-              <div className="flex items-center text-xs text-muted-foreground gap-1">
+              <div className="flex items-center text-sm text-muted-foreground gap-1">
                 <CalendarDays className="w-3 h-3"/>
                 <time className="text-xs whitespace-nowrap">{experience.duration}</time>
               </div>
