@@ -1,8 +1,7 @@
-{
-  "extends": "next/core-web-vitals",
-  "rules": {
-    "react/no-unescaped-entities": "off",
-    "@typescript-eslint/no-explicit-any": "warn",
-    "@next/next/no-img-element": "warn"
-  }
-}
+//{
+//  "extends": "next/core-web-vitals",
+//  "rules": {
+//    "react/no-unescaped-entities": "off",
+//    "@next/next/no-img-element": "warn"
+//  }
+//}

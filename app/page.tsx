@@ -58,7 +58,7 @@ export default function Home() {
       <section className="space-y-6">
         <SectionHeader
           title="Featured Projects"
-          description="Here are some cool apps I've built recently"
+          description="Here are some cool apps I&apos;ve built recently"
         />
         <ProjectGrid limit={2}/>
         <ViewAllLink href="/projects"/>
@@ -68,7 +68,7 @@ export default function Home() {
       <section className="space-y-6">
         <SectionHeader
           title="My Journey"
-          description="Places where I've learned and grown as a developer"
+          description="Places where I&apos;ve learned and grown as a developer"
         />
         <ExperienceList limit={2}/>
         <ViewAllLink href="/journey"/>
@@ -96,7 +96,7 @@ export default function Home() {
 
       {/* Projects Showcase */}
       <section className="flex flex-col gap-4">
-        <SectionHeader title="Featured Drops" description="Premium digital products I've created recently"/>
+        <SectionHeader title="Featured Drops" description="Premium digital products I&apos;ve created recently"/>
         <DropList limit={3}/>
         <ViewAllLink href="/drops"/>
       </section>

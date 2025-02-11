@@ -2,6 +2,7 @@
 
 import React, {useState} from 'react';
 import {ArrowLeft, ArrowRight} from 'lucide-react';
+import Image from "next/image";
 
 const ProductDetails = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -37,7 +38,7 @@ const ProductDetails = () => {
                 aria-roledescription="slide"
                 className="min-w-0 shrink-0 grow-0 basis-full pl-4"
               >
-                <img
+                <Image
                   src={slide}
                   alt={`Creatorpreneur - Slide ${index + 1}`}
                   className="w-full h-auto"

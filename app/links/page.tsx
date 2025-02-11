@@ -6,6 +6,7 @@ import NewsLetterForm from "@/components/NewsLetterForm";
 import {links} from '@/data/links';
 import {Card, CardContent, CardHeader} from "@/components/ui/card";
 import PageHeader from "@/components/PageHeader";
+import Image from "next/image";
 
 
 const LinksPage = () => {
@@ -17,7 +18,7 @@ const LinksPage = () => {
 
       {/* Mobile Header */}
       <div className="flex flex-col items-center gap-2 md:hidden">
-        <img
+        <Image
           src="/images/avatar.jpeg"
           alt="Amar Al Fatah"
           className="rounded-full"
@@ -44,7 +45,7 @@ const LinksPage = () => {
             </CardHeader>
             <CardContent className="overflow-hidden rounded-md">
               <div className="aspect-video">
-                <img
+                <Image
                   src="https://raw.githubusercontent.com/amaralfatah/my-gallery/main/portfolio/portfolio-inklusi-aisyiyah.png"
                   alt="Latest video thumbnail"
                   className="w-full h-full object-cover"

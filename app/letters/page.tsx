@@ -11,7 +11,7 @@ const LetterPage = () => {
 
       {/* Header */}
       <PageHeader title="Building businesses in public. Sharing my experiences."
-                  description="I write about what I'm learning and curate valuable resources for entrepreneurs every Sunday
+                  description="I write about what I&apos;m learning and curate valuable resources for entrepreneurs every Sunday
           morning."/>
 
       {/* Subscription Form */}

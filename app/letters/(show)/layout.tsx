@@ -32,10 +32,10 @@ export default function LettersLayout({
         <span className="text-2xl font-medium text-foreground">You may also like</span>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col">
-            {letters.map((related, index) => (
+            {letters.map((related) => (
               <Link
-                key={index}
-                href={`/letters/${related.slug}`}
+                key={related.id}
+                href={related.url}
                 className="flex py-6 gap-4 items-center no-underline hover:bg-accent/50 transition-all duration-200 rounded-md hover:px-3 hover:-mx-3"
               >
                 <div

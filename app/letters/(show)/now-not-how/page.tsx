@@ -44,7 +44,7 @@ const NowNotHowPage = () => {
           </div>
         </div>
 
-        <h2 className="text-xl font-semibold mt-6">Things I've found interesting</h2>
+        <h2 className="text-xl font-semibold mt-6">Things I&apos;ve found interesting</h2>
         <p className="italic text-muted-foreground">links to valuable stuff I thought was worth sharing</p>
 
         {/* Links section */}

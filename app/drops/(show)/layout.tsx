@@ -1,4 +1,5 @@
 import {ArrowRight, Circle} from 'lucide-react';
+import Image from "next/image";
 
 export default function DropsLayout({
 
@@ -41,7 +42,7 @@ export default function DropsLayout({
               className="flex py-6 gap-4 items-center no-underline hover:bg-accent transition-all duration-200 rounded-md hover:border-input hover:px-3 hover:-mx-3"
             >
               <div className="h-16 w-16 overflow-hidden">
-                <img
+                <Image
                   src={product.image}
                   alt={product.title}
                   className="h-full rounded-lg object-cover"
