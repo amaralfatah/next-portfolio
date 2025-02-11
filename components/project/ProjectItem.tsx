@@ -98,12 +98,12 @@ const ProjectItem: FC<ProjectItemProps> = ({project}) => {
         </CardHeader>
 
         <CardFooter className="p-4 pt-0">
-          <div className="flex flex-wrap gap-1">
+          <div className="flex flex-wrap gap-2">
             {project.stack.map((tech) => (
               <Badge
                 key={tech}
                 variant="secondary"
-                className="text-xs px-2 py-0.5"
+                className="text-xs hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
               >
                 {tech}
               </Badge>

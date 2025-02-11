@@ -1,14 +1,10 @@
-// 1. types/experience.ts
-type Experience = {
+// types/experience.ts
+export type Experience = {
   id: number;
-  year: string;
   role: string;
-  companyName: string;
+  company: string;
+  location: string;
+  duration: string;
   description: string;
-}
-
-type ExperienceItemProps = {
-  experience: Experience;
-}
-
-export type {Experience, ExperienceItemProps};
+  technologies: string[];
+};
