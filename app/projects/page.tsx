@@ -1,5 +1,5 @@
 import PageHeader from "@/components/PageHeader";
-import ProjectGrid from "@/components/project/project-grid";
+import ProjectGrid from "@/components/project/ProjectGrid";
 
 const ProjectPage = () => {
   return (

@@ -5,11 +5,11 @@ import Link from 'next/link'
 import {ExternalLink} from 'lucide-react'
 import {links} from "@/data/links"
 import {Card} from "@/components/ui/card"
-import ContactForm from "@/components/contact-form"
-import ViewAllLink from "@/components/link/view-all-link";
-import SectionHeader from "@/components/home/section-header";
-import ExperienceList from "@/components/experience/experience-list";
-import ProjectGrid from "@/components/project/project-grid";
+import ContactForm from "@/components/ContactForm"
+import ViewAllLink from "@/components/link/ViewAllLink";
+import SectionHeader from "@/components/home/SectionHeader";
+import ExperienceList from "@/components/experience/ExperienceList";
+import ProjectGrid from "@/components/project/ProjectGrid";
 import StackList from "@/components/stack/StackList";
 import LetterList from "@/components/letter/LetterList";
 import DropList from "@/components/drop/DropList";

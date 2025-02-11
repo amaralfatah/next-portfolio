@@ -1,5 +1,5 @@
 // letters/page.tsx
-import NewsletterForm from "@/components/newsletter-form";
+import NewsLetterForm from "@/components/NewsLetterForm";
 import LetterList from "@/components/letter/LetterList";
 import PageHeader from "@/components/PageHeader";
 import React from "react";
@@ -15,7 +15,7 @@ const LetterPage = () => {
           morning."/>
 
       {/* Subscription Form */}
-      <NewsletterForm/>
+      <NewsLetterForm/>
 
       {/* Past Issues Section */}
       <div className="flex flex-col gap-4">

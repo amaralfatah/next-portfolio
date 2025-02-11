@@ -3,7 +3,7 @@
 import {usePathname} from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
-import {ModeToggle} from "@/components/mode-toggle"
+import {ModeToggle} from "@/components/ModeToggle"
 import {menuLinks} from "@/data/menu-links"
 
 export function DesktopNav() {

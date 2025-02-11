@@ -1,4 +1,4 @@
-import {BaseLink} from "@/components/link/base-link";
+import {BaseLink} from "@/components/link/BaseLink";
 import React from "react";
 import Image from "next/image";
 

@@ -1,4 +1,4 @@
-import ProjectItem from "@/components/project/project-item";
+import ProjectItem from "@/components/project/ProjectItem";
 import {projects} from "@/data/projects";
 import {FC} from "react";
 

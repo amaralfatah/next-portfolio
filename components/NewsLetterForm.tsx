@@ -4,7 +4,7 @@ import {Input} from "@/components/ui/input"
 import {Button} from "@/components/ui/button"
 import {Card} from "@/components/ui/card";
 
-export default function NewsletterForm() {
+export default function NewsLetterForm() {
   return (
 
 
@@ -27,7 +27,7 @@ export default function NewsletterForm() {
   )
 }
 
-// export default function NewsletterForm() {
+// export default function NewsLetterForm() {
 //   return (
 //     <form
 //       className="flex flex-col gap-4 rounded-md border-0 border-border bg-transparent p-0 md:flex-row md:gap-0 md:border md:bg-card md:p-2 md:pl-4">

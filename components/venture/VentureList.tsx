@@ -1,6 +1,6 @@
 import {FC} from "react";
 import {ventures} from "@/data/ventures";
-import {VentureLink} from "@/components/link/venture-link";
+import {VentureLink} from "@/components/link/VentureLink";
 
 type VentureListProps = {
   limit?: number;

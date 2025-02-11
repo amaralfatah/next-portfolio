@@ -1,5 +1,5 @@
 import {drops} from "@/data/drops";
-import {ImageLink} from "@/components/link/image-link";
+import {ImageLink} from "@/components/link/ImageLink";
 import {FC} from "react";
 
 type DropListProps = {

@@ -135,7 +135,7 @@ const DevelopmentPage = () => {
       <div className="flex flex-col gap-4 border-b border-border pb-8">
         <h1 className="text-4xl font-medium text-foreground">Development Stack</h1>
         <span className="text-muted-foreground">All of the apps, tools, and services I use to build my projects.</span>
-        <span className="text-sm text-muted-foreground">Note: I may earn a commission from some links (thank you for supporting me).</span>
+        <span className="text-sm text-muted-foreground">Note: I may earn a commission from some links (thank you for supporting me)&apos;.</span>
       </div>
 
       {/* Main Content */}

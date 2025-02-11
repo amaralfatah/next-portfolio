@@ -1,7 +1,7 @@
 // app/letters/layout.tsx
 import React from 'react'
 import Link from "next/link";
-import NewsletterForm from "@/components/newsletter-form";
+import NewsLetterForm from "@/components/NewsLetterForm";
 import {letters} from "@/data/letters";
 
 export default function LettersLayout({
@@ -22,7 +22,7 @@ export default function LettersLayout({
               business.</p>
           </div>
           <div className="flex flex-col gap-4">
-            <NewsletterForm/>
+            <NewsLetterForm/>
           </div>
         </div>
       </div>

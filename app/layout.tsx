@@ -4,9 +4,9 @@ import type {Metadata} from 'next'
 import {Inter} from 'next/font/google'
 import './globals.css'
 import {ThemeProvider} from "@/components/theme-provider"
-import {MobileNav} from "@/components/mobile-nav";
-import {DesktopNav} from "@/components/desktop-nav";
-import Footer from "@/components/footer";
+import {MobileNav} from "@/components/MobileNav";
+import {DesktopNav} from "@/components/DesktopNav";
+import Footer from "@/components/Footer";
 
 const inter = Inter({subsets: ['latin']})
 

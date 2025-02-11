@@ -1,6 +1,6 @@
 import {FC} from 'react';
 import {experiences} from '@/data/experiences';
-import ExperienceItem from './experience-item';
+import ExperienceItem from './ExperienceItem';
 
 type ExperienceListProps = {
   limit?: number;

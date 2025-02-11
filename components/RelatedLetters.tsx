@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import {letters} from '@/data/letters'
-import {RightArrowIcon} from '@/components/icons'
+import {RightArrowIcon} from '@/components/Icons'
 
 export function RelatedLetters() {
   return (

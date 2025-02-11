@@ -1,6 +1,6 @@
 import {stacks} from "@/data/stacks";
 import {FC} from "react";
-import {ColLink} from "@/components/link/col-link";
+import {ColLink} from "@/components/link/ColLink";
 
 type StackListProps = {
   limit?: number;

@@ -1,6 +1,6 @@
 import {FC} from "react";
 import {letters} from "@/data/letters";
-import {RowLink} from "@/components/link/row-link";
+import {RowLink} from "@/components/link/RowLink";
 
 type LetterListProps = {
   limit?: number;

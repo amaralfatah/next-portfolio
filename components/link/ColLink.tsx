@@ -1,4 +1,4 @@
-import {BaseLink} from "@/components/link/base-link";
+import {BaseLink} from "@/components/link/BaseLink";
 
 interface SimpleLinkProps {
   title: string;

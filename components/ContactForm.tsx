@@ -66,10 +66,11 @@ const ContactForm = () => {
         setStatus({loading: false, error: null, success: true});
         setFormData({name: '', email: '', message: ''});
       }
-    } catch (error: any) {
+    } catch (error: Error | unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Failed to send message. Please try again.';
       setStatus({
         loading: false,
-        error: error.message || 'Failed to send message. Please try again.',
+        error: errorMessage,
         success: false,
       });
     }
@@ -128,7 +129,7 @@ const ContactForm = () => {
         <Alert className="mt-4 flex items-center">
           <div className="h-full me-2"><CheckCircle2 className="h-4 w-4 "/></div>
           <AlertDescription>
-            Message sent successfully! I'll get back to you as soon as possible.
+            Message sent successfully! I&apos;ll get back to you as soon as possible.
           </AlertDescription>
         </Alert>
       )}

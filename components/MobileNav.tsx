@@ -1,11 +1,11 @@
-// components/mobile-nav.tsx
+// components/MobileNav.tsx
 'use client'
 
 import {useState} from 'react'
 import Link from 'next/link'
 import {Menu} from 'lucide-react'
 import {Button} from "@/components/ui/button"
-import {ModeToggle} from "@/components/mode-toggle";
+import {ModeToggle} from "@/components/ModeToggle";
 import {menuLinks} from "@/data/menu-links"
 
 export function MobileNav() {

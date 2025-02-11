@@ -1,5 +1,5 @@
 import {jobs} from '@/data/jobs'
-import {RowLink} from "@/components/link/row-link";
+import {RowLink} from "@/components/link/RowLink";
 import PageHeader from "@/components/PageHeader";
 import React from "react";
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import {ArrowLeft, Copy} from 'lucide-react';
 import {letters} from "@/data/letters";
+import Image from "next/image";
 
 const NowNotHowPage = () => {
   return (
@@ -27,15 +28,15 @@ const NowNotHowPage = () => {
 
       {/* Content */}
       <div className="letter-content flex flex-col gap-6 text-foreground">
-        <p>I was listening to a podcast with Noah Kagan and Ali Abdaal where they talked about the idea of "now
-          now how".</p>
+        <p>I was listening to a podcast with Noah Kagan and Ali Abdaal where they talked about the idea of &quot;now not
+          how&quot;.</p>
         <p>This is a conversation I wish I could have listened to years ago.</p>
         {/* ... rest of the content paragraphs ... */}
         <h2 className="text-xl font-semibold mt-6">The One Monitor Setup</h2>
 
         <div className="overflow-hidden rounded-md bg-card">
           <div className="aspect-video">
-            <img
+            <Image
               src="/images/avatar.jpeg"
               alt="Video thumbnail"
               className="w-full h-full object-cover"
@@ -57,8 +58,8 @@ const NowNotHowPage = () => {
 
         <p>Have a great week.</p>
         <p>Amar</p>
-        <p className="text-muted-foreground">P.S. If you found this letter helpful, please consider sharing it
-          with a friend :)</p>
+        <p className="text-muted-foreground">P.S. If you found this letter helpful, please consider sharing it with a
+          friend &apos;:)</p>
       </div>
 
       {/* Copy URL Button */}
