@@ -1,16 +1,15 @@
 import {jobs} from '@/data/jobs'
 import {RowLink} from "@/components/link/row-link";
+import PageHeader from "@/components/PageHeader";
+import React from "react";
 
 const JobsPage = () => {
   return (
     <div className="flex flex-col gap-16">
-      <div className="flex flex-col gap-4">
-        <h1 className="text-3xl font-medium text-foreground">Join our team</h1>
-        <p className="text-muted-foreground">
-          Join us in building the future of technology. We're always looking for talented individuals who are passionate
-          about msaking a difference.
-        </p>
-      </div>
+      {/* Header */}
+      <PageHeader title="Join our team"
+                  description="Join us in building the future of technology. We're always looking for talented individuals who are passionate
+          about msaking a difference."/>
 
       <div className="flex flex-col gap-4">
         <div className="flex items-center justify-between">

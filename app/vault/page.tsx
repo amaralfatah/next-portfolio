@@ -1,4 +1,5 @@
 import {Card, CardContent} from "@/components/ui/card";
+import PageHeader from "@/components/PageHeader";
 
 const VaultPage = () => {
   const tools = [
@@ -29,12 +30,8 @@ const VaultPage = () => {
   return (
     <div className="flex flex-col gap-16">
       {/* Header */}
-      <div className="flex flex-col gap-4">
-        <h1 className="text-3xl font-medium text-foreground">Vault</h1>
-        <p className="text-foreground">
-          Links to valuable tools and resources I've come across. More added all the time.
-        </p>
-      </div>
+      <PageHeader title="Vault"
+                  description="Links to valuable tools and resources I've come across. More added all the time."/>
 
       {/* Tools Grid */}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">

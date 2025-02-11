@@ -1,26 +1,21 @@
 // letters/page.tsx
 import NewsletterForm from "@/components/newsletter-form";
 import LetterList from "@/components/letter/LetterList";
+import PageHeader from "@/components/PageHeader";
+import React from "react";
 
-const NewsletterPage = () => {
+const LetterPage = () => {
 
   return (
     <div className="flex flex-col gap-16">
-      {/* Header Section */}
-      <div className="flex flex-col gap-4">
-        <h1 className="text-3xl font-medium text-foreground">
-          Building businesses in public. Sharing my experiences.
-        </h1>
-        <p className="text-muted-foreground">
-          I write about what I'm learning and curate valuable resources for entrepreneurs every Sunday
-          morning.
-        </p>
 
-        {/* Subscription Form */}
-        <div className="flex flex-col gap-4">
-          <NewsletterForm/>
-        </div>
-      </div>
+      {/* Header */}
+      <PageHeader title="Building businesses in public. Sharing my experiences."
+                  description="I write about what I'm learning and curate valuable resources for entrepreneurs every Sunday
+          morning."/>
+
+      {/* Subscription Form */}
+      <NewsletterForm/>
 
       {/* Past Issues Section */}
       <div className="flex flex-col gap-4">
@@ -31,4 +26,4 @@ const NewsletterPage = () => {
   );
 };
 
-export default NewsletterPage;
+export default LetterPage;

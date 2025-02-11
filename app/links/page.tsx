@@ -5,16 +5,15 @@ import {buttonVariants} from "@/components/ui/button";
 import NewsletterForm from "@/components/newsletter-form";
 import {links} from '@/data/links';
 import {Card, CardContent, CardHeader} from "@/components/ui/card";
+import PageHeader from "@/components/PageHeader";
 
 
 const LinksPage = () => {
   return (
     <div className="flex flex-col gap-8">
-      {/* Desktop Header */}
-      <div className="hidden flex-col gap-4 md:flex">
-        <h1 className="text-3xl font-medium text-foreground">Links</h1>
-        <p className="text-foreground">Quicklinks to my social platforms and projects.</p>
-      </div>
+      {/* Header */}
+      <PageHeader title="Links"
+                  description="Quicklinks to my social platforms and projects."/>
 
       {/* Mobile Header */}
       <div className="flex flex-col items-center gap-2 md:hidden">
