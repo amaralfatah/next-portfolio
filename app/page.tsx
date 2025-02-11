@@ -61,7 +61,7 @@ export default function Home() {
           description="Here are some cool apps I've built recently"
         />
         <ProjectGrid limit={2}/>
-        <ViewAllLink href="/project"/>
+        <ViewAllLink href="/projects"/>
       </section>
 
       {/* Experience */}
