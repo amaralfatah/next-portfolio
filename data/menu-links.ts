@@ -5,6 +5,7 @@ export const menuLinks = [
   {url: '/drops', name: 'Drops'},
   {url: '/stack', name: 'Stack'},
   {url: '/projects', name: 'Project'},
+  {url: '/journeys', name: 'Journey'},
   {url: '/links', name: 'Links'},
   // {url: '/jobs', name: 'Jobs'},
 ]

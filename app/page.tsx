@@ -71,7 +71,7 @@ export default function Home() {
           description="Places where I&apos;ve learned and grown as a developer"
         />
         <ExperienceList limit={2}/>
-        <ViewAllLink href="/journey"/>
+        <ViewAllLink href="/journeys"/>
       </section>
 
       {/* Skills & Tools */}

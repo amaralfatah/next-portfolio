@@ -1,15 +1,4 @@
-import {
-  Briefcase,
-  Calendar,
-  Droplet,
-  Github,
-  Instagram,
-  Linkedin,
-  LucideIcon,
-  Mail,
-  Twitter,
-  Youtube
-} from 'lucide-react';
+import {Github, Instagram, Linkedin, LucideIcon, Mail, Twitter, Youtube} from 'lucide-react';
 
 export interface LinkItem {
   id: number;
@@ -55,14 +44,14 @@ export const links: LinkItem[] = [
     buttonText: 'Email',
     url: 'mailto:amaralfatah.me@gmail.com'
   },
-  {
-    id: 5,
-    icon: Calendar,
-    title: 'Schedule a Call',
-    description: "I'm always happy to chat with other developers and creators.",
-    buttonText: 'Schedule',
-    url: 'https://cal.link/cole'
-  },
+  // {
+  //   id: 5,
+  //   icon: Calendar,
+  //   title: 'Schedule a Call',
+  //   description: "I'm always happy to chat with other developers and creators.",
+  //   buttonText: 'Schedule',
+  //   url: 'https://cal.link/cole'
+  // },
   {
     id: 6,
     icon: Mail,
@@ -71,22 +60,22 @@ export const links: LinkItem[] = [
     buttonText: 'Read',
     url: '/letters?via=links'
   },
-  {
-    id: 7,
-    icon: Briefcase,
-    title: 'Jobs',
-    description: 'Join my team and build cool things.',
-    buttonText: 'View',
-    url: '/jobs'
-  },
-  {
-    id: 8,
-    icon: Droplet,
-    title: 'Drops',
-    description: 'Wallpapers, Notion templates, and more.',
-    buttonText: 'Browse',
-    url: 'https://colecaccamise.com/drops?via=links'
-  },
+  // {
+  //   id: 7,
+  //   icon: Briefcase,
+  //   title: 'Jobs',
+  //   description: 'Join my team and build cool things.',
+  //   buttonText: 'View',
+  //   url: '/jobs'
+  // },
+  // {
+  //   id: 8,
+  //   icon: Droplet,
+  //   title: 'Drops',
+  //   description: 'Wallpapers, Notion templates, and more.',
+  //   buttonText: 'Browse',
+  //   url: 'https://colecaccamise.com/drops?via=links'
+  // },
   {
     id: 9,
     icon: Youtube,

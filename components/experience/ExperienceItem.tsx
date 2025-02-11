@@ -18,14 +18,14 @@ const ExperienceItem: FC<ExperienceItemProps> = ({experience, isLast = false}) =
     {/* Timeline continuous line */}
     {!isLast && (
       <div
-        className="absolute left-[2rem] top-0 h-full w-px bg-border/50"
+        className="absolute left-[0.5rem] top-0 h-full w-px bg-border/50"
         style={{height: 'calc(100% + 1rem)'}}
       />
     )}
 
     <div className="relative group">
       <div
-        className="p-6 rounded-lg border border-transparent transition-all duration-300"
+        className=" rounded-lg border border-transparent transition-all duration-300"
       >
         <div className="flex gap-4">
           <div className="relative">

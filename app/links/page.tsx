@@ -49,6 +49,8 @@ const LinksPage = () => {
                   src="https://raw.githubusercontent.com/amaralfatah/my-gallery/main/portfolio/portfolio-inklusi-aisyiyah.png"
                   alt="Latest video thumbnail"
                   className="w-full h-full object-cover"
+                  width={200}
+                  height={72}
                 />
               </div>
             </CardContent>
