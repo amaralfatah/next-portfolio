@@ -7,7 +7,9 @@ type ExperienceListProps = {
 }
 
 const ExperienceList: FC<ExperienceListProps> = ({limit}) => {
-  const displayedExperiences = limit ? experiences.slice(0, limit) : experiences;
+  const displayedExperiences = [...experiences]
+    .sort((a, b) => b.id - a.id)
+    .slice(0, limit || experiences.length);
   return (
     <div className="space-y-0">
       {displayedExperiences.map((item, index) => (
