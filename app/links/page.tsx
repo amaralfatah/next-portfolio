@@ -2,7 +2,6 @@ import React from 'react';
 import {ArrowRight} from 'lucide-react';
 import Link from "next/link";
 import {buttonVariants} from "@/components/ui/button";
-import NewsLetterForm from "@/components/NewsLetterForm";
 import {links} from '@/data/links';
 import {Card, CardContent, CardHeader} from "@/components/ui/card";
 import PageHeader from "@/components/PageHeader";
@@ -58,7 +57,7 @@ const LinksPage = () => {
 
 
           {/* Newsletter Signup */}
-          <NewsLetterForm/>
+          {/*<NewsLetterForm/>*/}
 
           {/* All Links */}
           {links.map((link, index) => {

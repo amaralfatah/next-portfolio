@@ -16,7 +16,7 @@ export const links: LinkItem[] = [
     icon: Twitter,
     title: 'Twitter / X',
     description: "Sharing what I'm working on.",
-    buttonText: 'Follow',
+    buttonText: 'Tweet',
     url: 'https://twitter.com/amaralfatah'
   },
   {
@@ -52,14 +52,14 @@ export const links: LinkItem[] = [
   //   buttonText: 'Schedule',
   //   url: 'https://cal.link/cole'
   // },
-  {
-    id: 6,
-    icon: Mail,
-    title: 'Weekly Newsletter',
-    description: "Insights on how I'm building my businesses.",
-    buttonText: 'Read',
-    url: '/letters?via=links'
-  },
+  // {
+  //   id: 6,
+  //   icon: Mail,
+  //   title: 'Weekly Newsletter',
+  //   description: "Insights on how I'm building my businesses.",
+  //   buttonText: 'Read',
+  //   url: '/letters?via=links'
+  // },
   // {
   //   id: 7,
   //   icon: Briefcase,
