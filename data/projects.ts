@@ -99,5 +99,16 @@ export const projects: Project[] = [
     github: null,
     stack: ["CodeIgniter 3", "Bootstrap"],
     date: "2024-08-30"
+  },
+  {
+    id: 9,
+    name: "TokoCacha",
+    description: "A comprehensive Point of Sale (POS) system with integrated landing page for retail businesses. Features include inventory management, sales tracking, receipt generation with thermal printing support, customer management, and responsive admin dashboard.",
+    image: "https://raw.githubusercontent.com/amaralfatah/my-gallery/main/portfolio/portfolio-tokocacha.png",
+    link: "https://drive.google.com/drive/folders/1ohe9Hycns022498DDZt1_20C4HFL9qfP?usp=sharing",
+    website: null,
+    github: null,
+    stack: ["Laravel 11", "Bootstrap 5"],
+    date: "2025-02-20"
   }
 ];
