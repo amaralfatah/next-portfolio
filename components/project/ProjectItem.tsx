@@ -1,7 +1,7 @@
 import {FC} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import {Calendar, ExternalLink, Github} from 'lucide-react';
+import {Calendar, ExternalLink, Github, Globe} from 'lucide-react';
 import {Card, CardFooter, CardHeader} from "@/components/ui/card";
 import {Badge} from "@/components/ui/badge";
 import {Button} from "@/components/ui/button";
@@ -27,11 +27,35 @@ const ProjectItem: FC<ProjectItemProps> = ({project}) => {
             fill
             className="object-cover transition-all duration-500 ease-out group-hover:scale-105"
             loading="lazy"
-            sizes="100"
+            sizes="(max-width: 768px) 100vw, 33vw"
           />
           <div
             className="absolute inset-0 bg-gradient-to-t from-background/80 to-background/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
             <div className="absolute bottom-4 left-4 right-4 flex justify-end gap-2">
+              {project.website && (
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      asChild
+                      variant="secondary"
+                      size="icon"
+                      className="h-8 w-8 bg-background/90 backdrop-blur-sm"
+                    >
+                      <Link
+                        href={`https://${project.website}`}
+                        target="_blank"
+                        aria-label={`Visit website: ${project.website}`}
+                      >
+                        <Globe className="h-4 w-4"/>
+                      </Link>
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Visit Website</p>
+                  </TooltipContent>
+                </Tooltip>
+              )}
+
               {project.link && (
                 <Tooltip>
                   <TooltipTrigger asChild>

@@ -4,7 +4,7 @@ export const projects: Project[] = [
   {
     id: 1,
     name: "FreshCheck App",
-    description: "An app that uses AI to assess the freshness of your fruits and vegetables.",
+    description: "An AI-powered app that evaluates the freshness of fruits and vegetables to help you make better food choices.",
     image: "https://raw.githubusercontent.com/amaralfatah/my-gallery/main/portfolio/portfolio-freshcheck-app.png",
     link: "https://drive.google.com/drive/folders/1d7H7fsivkSXx3et9U8UZI6wKz_ON7d6q?usp=sharing",
     website: null,
@@ -15,7 +15,7 @@ export const projects: Project[] = [
   {
     id: 2,
     name: "DexShop App",
-    description: "An app that simplifies inventory management for your clothing store.",
+    description: "A mobile app designed to streamline inventory management for clothing stores, simplifying stock tracking and sales.",
     image: "https://raw.githubusercontent.com/amaralfatah/my-gallery/main/portfolio/portfolio-dexshop-app.png",
     link: "https://drive.google.com/drive/folders/1bjlg3OHKEF-EEq7XbZkKO_mabviCDOIC?usp=sharing",
     website: null,
@@ -26,7 +26,7 @@ export const projects: Project[] = [
   {
     id: 3,
     name: "Seven Inc Attendance",
-    description: "A website designed to manage employees at Seven Inc, with features like attendance tracking and payroll.",
+    description: "A web platform to manage employee attendance, track hours, and handle payroll for Seven Inc efficiently.",
     image: "https://raw.githubusercontent.com/amaralfatah/my-gallery/main/portfolio/portfolio-presensi-seven-inc.png",
     link: "https://drive.google.com/drive/folders/1TvjwdolJYsdH2v3oSrVF7LI1YRjsOZMD?usp=sharing",
     website: null,
@@ -37,7 +37,7 @@ export const projects: Project[] = [
   {
     id: 4,
     name: "Trebez App",
-    description: "An educational app that helps you become a safer and more responsible driver.",
+    description: "An app that educates drivers on road safety and responsible driving practices to reduce accidents and improve safety.",
     image: "https://raw.githubusercontent.com/amaralfatah/my-gallery/main/portfolio/portfolio-trebez-app.png",
     link: "https://drive.google.com/drive/folders/1__LIhj69dknlnYoGzcFyEEgEemZ9XJ65?usp=sharing",
     website: null,
@@ -48,7 +48,7 @@ export const projects: Project[] = [
   {
     id: 5,
     name: "Aisyiyah Inclusion System",
-    description: "A website for reporting inclusion data across Aisyiyah branches in Indonesia.",
+    description: "A website platform for collecting and reporting inclusion data across Aisyiyah branches in Indonesia to enhance social programs.",
     image: "https://raw.githubusercontent.com/amaralfatah/my-gallery/main/portfolio/portfolio-inklusi-aisyiyah.png",
     link: "https://drive.google.com/drive/folders/1Z1k4f2p60dgo6Zbv51FHB8_artxWuS8N?usp=sharing",
     website: null,
@@ -59,7 +59,7 @@ export const projects: Project[] = [
   {
     id: 6,
     name: "CryptoMind App",
-    description: "A learning app that introduces the modern cryptography algorithm, Cipher Feedback (CFB).",
+    description: "A learning tool designed to introduce and explain the modern cryptography algorithm, Cipher Feedback (CFB).",
     image: "https://raw.githubusercontent.com/amaralfatah/my-gallery/main/portfolio/portfolio-cryptomind.png",
     link: "https://drive.google.com/drive/folders/1HhNH1Qv8h1n-3haaN6OdY8wgALKszIv5?usp=sharing",
     website: null,
@@ -70,7 +70,7 @@ export const projects: Project[] = [
   {
     id: 7,
     name: "Employee Management System",
-    description: "A website that simplifies employee data management, from attendance to payroll.",
+    description: "A comprehensive system for managing employee data, handling everything from attendance records to payroll management.",
     image: "https://raw.githubusercontent.com/amaralfatah/my-gallery/main/portfolio/portfolio-sistem-karyawan.png",
     link: "https://drive.google.com/drive/folders/1uF-KMkZcXE2TX-bz0xPVCo__aG-318?usp=sharing",
     website: null,
@@ -81,7 +81,7 @@ export const projects: Project[] = [
   {
     id: 8,
     name: "Posyandu Melati",
-    description: "A website that digitizes Posyandu services, performs data analysis, and generates health reports.",
+    description: "A web platform to digitalize Posyandu services, allowing health data collection, analysis, and report generation for better management.",
     image: "https://raw.githubusercontent.com/amaralfatah/my-gallery/main/portfolio/portfolio-posyandu-melati.png",
     link: "https://drive.google.com/drive/folders/1wW_HANMtYmwzleGUYD_Iz6DJB3gr1UO9?usp=sharing",
     website: null,
@@ -92,7 +92,7 @@ export const projects: Project[] = [
   {
     id: 9,
     name: "BSI Helpdesk",
-    description: "A website for efficiently recording student complaints and support requests.",
+    description: "A simple and efficient web system to track student complaints, support requests, and ensure swift issue resolution.",
     image: "https://raw.githubusercontent.com/amaralfatah/my-gallery/main/portfolio/portfolio-helpdesk-bsi.png",
     link: "https://drive.google.com/drive/folders/1ohe9Hycns022498DDZt1_20C4HFL9qfP?usp=sharing",
     website: null,
@@ -101,9 +101,9 @@ export const projects: Project[] = [
     date: "2024-08-30"
   },
   {
-    id: 9,
+    id: 10,
     name: "ShuttleCar App",
-    description: "A bus tracking app that I developed to improve the passenger experience and efficiency of public transportation. The app provides up-to-date information on bus locations, routes, and estimated arrival times.",
+    description: "A bus tracking application to improve the passenger experience by providing real-time bus location, routes, and estimated times of arrival.",
     image: "https://raw.githubusercontent.com/amaralfatah/my-gallery/main/portfolio/portfolio-shuttle-car-app.jpg",
     link: "https://drive.google.com/drive/folders/1VYNysfSYRf4kPcANLscdmU2g7roAZoaJ?usp=sharing",
     website: null,
@@ -112,9 +112,9 @@ export const projects: Project[] = [
     date: "2024-10-24"
   },
   {
-    id: 10,
+    id: 11,
     name: "Cikal ERP",
-    description: "An integrated system for school financial management that optimizes the process of tuition payments, student registration, accounting management, education cost management, and budget planning. This solution simplifies administrative workflows, increases financial transparency, and facilitates data-driven decision making for educational institutions.",
+    description: "A fully integrated ERP system for managing school finances, student registrations, and administrative tasks to streamline operations and enhance decision-making.",
     image: "https://raw.githubusercontent.com/amaralfatah/my-gallery/main/portfolio/portfolio-cikal-erp.png",
     link: null,
     website: "qlok-erp.cikal.co.id",
@@ -123,9 +123,9 @@ export const projects: Project[] = [
     date: "2025-02-07"
   },
   {
-    id: 11,
+    id: 12,
     name: "TokoCacha",
-    description: "A comprehensive Point of Sale (POS) system with integrated landing page for retail businesses. Features include inventory management, sales tracking, receipt generation with thermal printing support, customer management, and responsive admin dashboard.",
+    description: "A complete Point of Sale (POS) system integrated with a landing page, designed to streamline sales, inventory, and customer management for retail businesses.",
     image: "https://raw.githubusercontent.com/amaralfatah/my-gallery/main/portfolio/portfolio-tokocacha.png",
     link: null,
     website: "tokocacha.com",
