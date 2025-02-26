@@ -113,13 +113,24 @@ export const projects: Project[] = [
   },
   {
     id: 10,
+    name: "Cikal ERP",
+    description: "An integrated system for school financial management that optimizes the process of tuition payments, student registration, accounting management, education cost management, and budget planning. This solution simplifies administrative workflows, increases financial transparency, and facilitates data-driven decision making for educational institutions.",
+    image: "https://raw.githubusercontent.com/amaralfatah/my-gallery/main/portfolio/portfolio-cikal-erp.png",
+    link: null,
+    website: "qlok-erp.cikal.co.id",
+    github: null,
+    stack: ["Laravel", "Bootstrap", "Jquery"],
+    date: "2025-02-07"
+  },
+  {
+    id: 11,
     name: "TokoCacha",
     description: "A comprehensive Point of Sale (POS) system with integrated landing page for retail businesses. Features include inventory management, sales tracking, receipt generation with thermal printing support, customer management, and responsive admin dashboard.",
     image: "https://raw.githubusercontent.com/amaralfatah/my-gallery/main/portfolio/portfolio-tokocacha.png",
     link: null,
     website: "tokocacha.com",
     github: null,
-    stack: ["Laravel", "Bootstrap"],
+    stack: ["Laravel", "Bootstrap", "Jquery"],
     date: "2025-02-20"
   }
 ];
