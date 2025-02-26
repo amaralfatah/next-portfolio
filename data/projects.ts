@@ -53,7 +53,7 @@ export const projects: Project[] = [
     link: "https://drive.google.com/drive/folders/1Z1k4f2p60dgo6Zbv51FHB8_artxWuS8N?usp=sharing",
     website: null,
     github: null,
-    stack: ["CodeIgniter 3", "Bootstrap"],
+    stack: ["CodeIgniter", "Bootstrap"],
     date: "2024-05-01"
   },
   {
@@ -97,18 +97,29 @@ export const projects: Project[] = [
     link: "https://drive.google.com/drive/folders/1ohe9Hycns022498DDZt1_20C4HFL9qfP?usp=sharing",
     website: null,
     github: null,
-    stack: ["CodeIgniter 3", "Bootstrap"],
+    stack: ["CodeIgniter", "Bootstrap"],
     date: "2024-08-30"
   },
   {
     id: 9,
+    name: "ShuttleCar App",
+    description: "A bus tracking app that I developed to improve the passenger experience and efficiency of public transportation. The app provides up-to-date information on bus locations, routes, and estimated arrival times.",
+    image: "https://raw.githubusercontent.com/amaralfatah/my-gallery/main/portfolio/portfolio-shuttle-car-app.png",
+    link: "https://drive.google.com/drive/folders/1VYNysfSYRf4kPcANLscdmU2g7roAZoaJ?usp=sharing",
+    website: null,
+    github: null,
+    stack: ["Flutter", "BLoC"],
+    date: "2024-10-24"
+  },
+  {
+    id: 10,
     name: "TokoCacha",
     description: "A comprehensive Point of Sale (POS) system with integrated landing page for retail businesses. Features include inventory management, sales tracking, receipt generation with thermal printing support, customer management, and responsive admin dashboard.",
     image: "https://raw.githubusercontent.com/amaralfatah/my-gallery/main/portfolio/portfolio-tokocacha.png",
-    link: "https://drive.google.com/drive/folders/1ohe9Hycns022498DDZt1_20C4HFL9qfP?usp=sharing",
+    link: null,
     website: "tokocacha.com",
     github: null,
-    stack: ["Laravel 11", "Bootstrap 5"],
+    stack: ["Laravel", "Bootstrap"],
     date: "2025-02-20"
   }
 ];
