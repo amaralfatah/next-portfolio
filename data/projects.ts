@@ -104,7 +104,7 @@ export const projects: Project[] = [
     id: 9,
     name: "ShuttleCar App",
     description: "A bus tracking app that I developed to improve the passenger experience and efficiency of public transportation. The app provides up-to-date information on bus locations, routes, and estimated arrival times.",
-    image: "https://raw.githubusercontent.com/amaralfatah/my-gallery/main/portfolio/portfolio-shuttle-car-app.png",
+    image: "https://raw.githubusercontent.com/amaralfatah/my-gallery/main/portfolio/portfolio-shuttle-car-app.jpg",
     link: "https://drive.google.com/drive/folders/1VYNysfSYRf4kPcANLscdmU2g7roAZoaJ?usp=sharing",
     website: null,
     github: null,
