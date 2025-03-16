@@ -1,14 +1,13 @@
 // app/links/page.tsx
 import React from 'react';
-import {ArrowRight} from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Link from "next/link";
-import {buttonVariants} from "@/components/ui/button";
-import {links} from '@/data/links';
-import {Card, CardContent, CardHeader} from "@/components/ui/card";
+import { buttonVariants } from "@/components/ui/button";
+import { links } from '@/data/links';
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import PageHeader from "@/components/PageHeader";
-import Image from "next/image";
-import {getLatestYouTubeVideo} from '@/utils/youtube';
-
+import { getLatestYouTubeVideo } from '@/utils/youtube';
+import { BrutalImage } from '@/components/BrutalImage';
 async function LinksPage() {
   const latestVideo = await getLatestYouTubeVideo();
 
@@ -20,13 +19,7 @@ async function LinksPage() {
       />
 
       <div className="flex flex-col items-center gap-2 md:hidden">
-        <Image
-          src="/images/avatar.jpeg"
-          alt="Amar Al Fatah"
-          className="rounded-full"
-          width={72}
-          height={72}
-        />
+        <BrutalImage />
         <h2 className="text-foreground">Amar Al Fatah</h2>
         <span className="text-muted-foreground">Software Engineer & Entrepreneur</span>
       </div>
@@ -44,7 +37,7 @@ async function LinksPage() {
                   className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground group"
                 >
                   <span>YouTube</span>
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1"/>
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </a>
               </CardHeader>
               <CardContent className="overflow-hidden rounded-md p-4 pt-0">
@@ -65,7 +58,7 @@ async function LinksPage() {
             const Icon = link.icon;
             return (
               <Card key={index} className="flex items-center space-x-4 p-4">
-                <Icon className="w-7 h-7"/>
+                <Icon className="w-7 h-7" />
                 <div className="flex-1 space-y-1">
                   <p className="text-sm font-medium leading-none">
                     {link.title}
@@ -74,7 +67,7 @@ async function LinksPage() {
                     {link.description}
                   </p>
                 </div>
-                <Link href={link.url} className={buttonVariants({variant: "outline"})}>
+                <Link href={link.url} className={buttonVariants({ variant: "outline" })}>
                   {link.buttonText}
                 </Link>
               </Card>

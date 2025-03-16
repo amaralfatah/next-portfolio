@@ -1,10 +1,11 @@
 "use client"
 
-import {usePathname} from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
-import {ModeToggle} from "@/components/ModeToggle"
-import {menuLinks} from "@/data/menu-links"
+import { ModeToggle } from "@/components/ModeToggle"
+import { menuLinks } from "@/data/menu-links"
+import { BrutalImage } from './BrutalImage'
 
 export function DesktopNav() {
   const pathname = usePathname()
@@ -20,14 +21,10 @@ export function DesktopNav() {
     <aside className="sticky top-0 hidden h-screen w-48 py-20 md:block">
       <nav className="flex h-full w-full flex-col gap-12 overflow-visible" aria-label="Desktop navigation">
         <div className="flex w-full flex-col items-start gap-4 text-left">
-          <Image
-            alt="Amar Al Fatah"
-            src="/images/avatar.jpeg"
-            width={72}
-            height={72}
-            className="rounded-full"
-            priority
-          />
+          <div className="relative">
+            <BrutalImage />
+            <div className="absolute -bottom-1 -right-1 h-4 w-4 rounded-full bg-red-500 opacity-70 animate-pulse"></div>
+          </div>
 
           <div>
             <span className="text-lg font-medium text-foreground">Amar Al Fatah</span>
@@ -40,18 +37,17 @@ export function DesktopNav() {
             <li key={link.name}>
               <Link
                 href={link.url}
-                className={`flex items-center gap-2 py-1 transition-colors ${
-                  isActiveLink(link.url)
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
+                className={`flex items-center gap-2 py-1 transition-colors ${isActiveLink(link.url)
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+                  }`}
               >
                 <span>{link.name}</span>
               </Link>
             </li>
           ))}
           <li>
-            <ModeToggle/>
+            <ModeToggle />
           </li>
         </ul>
       </nav>
