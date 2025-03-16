@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import Image from 'next/image'
 
 interface BrutalImageProps {
@@ -10,30 +10,40 @@ interface BrutalImageProps {
   height?: number;
   brutalMode?: 'nightmarish' | 'demonic' | 'insanity';
   className?: string;
-  triggerChance?: number; // Probability of random trigger (0-1)
+  triggerChance?: number;
 }
 
-// Core scary assets - fewer but more impactful
-const terrorSounds = [
+const TERROR_SOUNDS = [
   '/sounds/joker-1.mp3',
   '/sounds/joker2-1.mp3',
   '/sounds/joker2-2.mp3',
   '/sounds/joker2-3.mp3'
-]
+];
 
-const nightmareImages = [
+const NIGHTMARE_IMAGES = [
   '/images/joker.jpg',
   '/images/joker2.jpg',
   '/images/joker3.jpg'
-]
+];
 
-const hauntingPhrases = [
+const HAUNTING_PHRASES = [
   "BEHIND YOU",
   "DON'T TURN AROUND",
   "I SEE YOU",
   "LOOK CLOSER",
   "YOU CAN'T ESCAPE"
-]
+];
+
+const initialTerrorState = {
+  show: false,
+  audioFiles: [] as string[],
+  imageFile: '/images/joker.jpg',
+  timeoutId: null as NodeJS.Timeout | null,
+  phase: 'dormant' as 'dormant' | 'subliminal' | 'flashing' | 'crescendo' | 'nightmare' | 'aftermath' | 'lingering',
+  messages: [] as string[],
+  intensity: 0,
+  glitchLevel: 0
+};
 
 export function BrutalImage({
   src = '/images/avatar.jpeg',
@@ -47,54 +57,28 @@ export function BrutalImage({
   const [isClient, setIsClient] = useState(false);
   const [visitCount, setVisitCount] = useState(0);
   const [lastActivity, setLastActivity] = useState(0);
-
-  // Consolidated state for terror experience
-  const [terrorState, setTerrorState] = useState({
-    show: false,
-    audioFiles: [] as string[],
-    imageFile: nightmareImages[0],
-    timeoutId: null as NodeJS.Timeout | null,
-    phase: 'dormant' as 'dormant' | 'subliminal' | 'flashing' | 'crescendo' | 'nightmare' | 'aftermath' | 'lingering',
-    messages: [] as string[],
-    intensity: 0,
-    glitchLevel: 0
-  });
+  const [terrorState, setTerrorState] = useState(initialTerrorState);
 
   const audioRefs = useRef<HTMLAudioElement[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
   const hauntingInterval = useRef<NodeJS.Timeout | null>(null);
   const glitchInterval = useRef<NodeJS.Timeout | null>(null);
 
-  // Initialize client-side data
-  useEffect(() => {
-    setIsClient(true);
-    try {
-      const storedVisits = localStorage.getItem('hauntedVisits');
-      setVisitCount(storedVisits ? parseInt(storedVisits) : 0);
-      setLastActivity(Date.now());
-    } catch (e) {
-      console.warn("Failed to access localStorage:", e);
-    }
-  }, []);
-
-  // UI control functions
-  const lockInterface = () => {
+  const lockInterface = useCallback(() => {
     document.body.style.overflow = "hidden";
     document.documentElement.style.overflow = "hidden";
     document.body.classList.add('terror-active');
-  };
+  }, []);
 
-  const unlockInterface = () => {
+  const unlockInterface = useCallback(() => {
     setTimeout(() => {
       document.body.style.overflow = "";
       document.documentElement.style.overflow = "";
       document.body.classList.remove('terror-active');
     }, 1000);
-  };
+  }, []);
 
-  // Audio functions
-  const playAudio = (files: string[], volume: number) => {
-    // Stop any current audio
+  const playAudio = useCallback((files: string[], volume: number) => {
     if (audioRefs.current) {
       audioRefs.current.forEach(audio => {
         if (audio) {
@@ -106,7 +90,6 @@ export function BrutalImage({
 
     if (!files || files.length === 0) return;
 
-    // Create and play new audio elements
     audioRefs.current = files.map(file => {
       try {
         const audio = new Audio(file);
@@ -120,14 +103,12 @@ export function BrutalImage({
         return audio;
       } catch (e) {
         console.warn("Error creating audio");
-        return null as any;
+        return null as unknown as HTMLAudioElement;
       }
     }).filter(Boolean);
-  };
+  }, []);
 
-  // Visual effect functions
-  const createVisualEffects = () => {
-    // Create overlay for effects
+  const createVisualEffects = useCallback(() => {
     const overlay = document.createElement('div');
     overlay.id = 'terror-overlay';
     overlay.style.position = 'fixed';
@@ -140,9 +121,7 @@ export function BrutalImage({
     overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.85)';
     document.body.appendChild(overlay);
 
-    // Add visual glitches for stronger effect
     if (brutalMode === 'insanity' || brutalMode === 'demonic') {
-      // Create RGB split effect
       const redLayer = document.createElement('div');
       redLayer.className = 'glitch-element';
       redLayer.style.position = 'fixed';
@@ -157,7 +136,6 @@ export function BrutalImage({
       redLayer.style.pointerEvents = 'none';
       document.body.appendChild(redLayer);
 
-      // Add scanlines
       for (let i = 0; i < 5; i++) {
         const scanline = document.createElement('div');
         scanline.className = 'glitch-element';
@@ -173,10 +151,9 @@ export function BrutalImage({
         document.body.appendChild(scanline);
       }
     }
-  };
+  }, [brutalMode]);
 
-  // Display text messages
-  const displayMessage = (message: string, position: number = 0) => {
+  const displayMessage = useCallback((message: string, position: number = 0) => {
     if (!message) return;
 
     const messageElement = document.createElement('div');
@@ -192,7 +169,6 @@ export function BrutalImage({
     messageElement.style.pointerEvents = 'none';
     messageElement.style.transform = 'translate(-50%, -50%)';
 
-    // Position based on parameter or randomly
     if (position === 0) {
       messageElement.style.top = '30%';
       messageElement.style.left = '50%';
@@ -207,13 +183,11 @@ export function BrutalImage({
     messageElement.textContent = message;
     document.body.appendChild(messageElement);
 
-    // Fade in
     setTimeout(() => {
       messageElement.style.opacity = '1';
       messageElement.style.transition = 'opacity 0.3s';
     }, 100);
 
-    // Fade out after duration
     setTimeout(() => {
       messageElement.style.opacity = '0';
       setTimeout(() => {
@@ -222,28 +196,23 @@ export function BrutalImage({
         }
       }, 500);
     }, 2000);
-  };
+  }, [brutalMode]);
 
-  // Clean up all effects
-  const cleanupEffects = () => {
-    // Remove intervals
+  const cleanupEffects = useCallback(() => {
     if (hauntingInterval.current) clearInterval(hauntingInterval.current);
     if (glitchInterval.current) clearInterval(glitchInterval.current);
 
-    // Remove overlay
     const overlay = document.getElementById('terror-overlay');
     if (overlay && overlay.parentNode) {
       overlay.parentNode.removeChild(overlay);
     }
 
-    // Remove all haunting messages
     document.querySelectorAll('.haunting-message, .glitch-element').forEach(el => {
       if (el.parentNode) {
         el.parentNode.removeChild(el);
       }
     });
 
-    // Stop all audio
     if (audioRefs.current) {
       audioRefs.current.forEach(audio => {
         if (audio) {
@@ -253,281 +222,222 @@ export function BrutalImage({
       });
     }
 
-    // Reset animation on container
     if (containerRef.current) {
       containerRef.current.style.animation = '';
     }
 
-    // Reset cursor
     document.documentElement.style.cursor = '';
-  };
+  }, []);
 
-  // Terror sequence phase functions
-  const beginSubliminalPhase = () => {
-    setTerrorState({
-      ...terrorState,
-      show: true,
-      phase: 'subliminal',
-      messages: [hauntingPhrases[Math.floor(Math.random() * hauntingPhrases.length)]],
-      intensity: 0.2,
-      glitchLevel: 0.1
-    });
+  const terrorPhaseController = useCallback(() => {
+    const getRandomMessage = () => HAUNTING_PHRASES[Math.floor(Math.random() * HAUNTING_PHRASES.length)];
+    const getRandomImage = () => NIGHTMARE_IMAGES[Math.floor(Math.random() * NIGHTMARE_IMAGES.length)];
+    const getRandomSound = () => TERROR_SOUNDS[Math.floor(Math.random() * TERROR_SOUNDS.length)];
 
-    // Brief flashes of images
-    const flashImage = document.createElement('img');
-    flashImage.src = nightmareImages[Math.floor(Math.random() * nightmareImages.length)];
-    flashImage.style.position = 'fixed';
-    flashImage.style.top = '0';
-    flashImage.style.left = '0';
-    flashImage.style.width = '100vw';
-    flashImage.style.height = '100vh';
-    flashImage.style.objectFit = 'cover';
-    flashImage.style.opacity = '0.15';
-    flashImage.style.zIndex = '2147483646';
-    flashImage.style.pointerEvents = 'none';
-    document.body.appendChild(flashImage);
+    const beginSubliminalPhase = () => {
+      setTerrorState({
+        ...initialTerrorState,
+        show: true,
+        phase: 'subliminal',
+        messages: [getRandomMessage()],
+        intensity: 0.2,
+        glitchLevel: 0.1
+      });
 
-    // Flash briefly then remove
-    setTimeout(() => {
-      if (flashImage.parentNode) {
-        flashImage.remove();
-      }
-    }, 100);
+      const flashImage = document.createElement('img');
+      flashImage.src = getRandomImage();
+      flashImage.style.position = 'fixed';
+      flashImage.style.top = '0';
+      flashImage.style.left = '0';
+      flashImage.style.width = '100vw';
+      flashImage.style.height = '100vh';
+      flashImage.style.objectFit = 'cover';
+      flashImage.style.opacity = '0.15';
+      flashImage.style.zIndex = '2147483646';
+      flashImage.style.pointerEvents = 'none';
+      document.body.appendChild(flashImage);
 
-    // Schedule next phase
-    setTimeout(() => transitionToFlashingPhase(), 1000);
-  };
-
-  const transitionToFlashingPhase = () => {
-    // Select a random audio for initial effect
-    const initialAudio = terrorSounds[Math.floor(Math.random() * terrorSounds.length)];
-
-    setTerrorState(prev => ({
-      ...prev,
-      phase: 'flashing',
-      audioFiles: [initialAudio],
-      messages: [hauntingPhrases[Math.floor(Math.random() * hauntingPhrases.length)]],
-      intensity: 0.5,
-      glitchLevel: 0.3
-    }));
-
-    // Play audio at low volume
-    playAudio([initialAudio], 0.3);
-
-    // Rapid flashing images
-    let flashIndex = 0;
-    const flashIntervalId = setInterval(() => {
-      setTerrorState(prev => ({
-        ...prev,
-        imageFile: nightmareImages[flashIndex % nightmareImages.length]
-      }));
-
-      flashIndex++;
-      if (flashIndex >= 8) {
-        clearInterval(flashIntervalId);
-      }
-    }, 100);
-
-    hauntingInterval.current = flashIntervalId;
-
-    // Schedule next phase
-    setTimeout(() => transitionToCrescendoPhase(), 1500);
-  };
-
-  const transitionToCrescendoPhase = () => {
-    // Add tension sound
-    const tensionAudio = terrorSounds[Math.min(terrorSounds.length - 1, 1)];
-
-    setTerrorState(prev => ({
-      ...prev,
-      phase: 'crescendo',
-      audioFiles: [tensionAudio],
-      intensity: 0.7,
-      glitchLevel: 0.5
-    }));
-
-    // Increase audio volume
-    playAudio([tensionAudio], 0.6);
-
-    // Display tension message
-    displayMessage(terrorState.messages[0], 0);
-
-    // Create pulsing effect
-    if (containerRef.current) {
-      containerRef.current.style.animation = 'pulse 0.8s ease-in-out infinite';
-    }
-
-    // Schedule next phase
-    setTimeout(() => transitionToNightmarePhase(), 1200);
-  };
-
-  const transitionToNightmarePhase = () => {
-    // Add main jumpscare sounds
-    const scareAudios = [
-      terrorSounds[Math.floor(Math.random() * terrorSounds.length)],
-      terrorSounds[Math.min(terrorSounds.length - 1, 3)]
-    ];
-
-    // Get random messages
-    const messages: string[] = [];
-    const shuffled = [...hauntingPhrases].sort(() => Math.random() - 0.5);
-    for (let i = 0; i < 3; i++) {
-      messages.push(shuffled[i]);
-    }
-
-    setTerrorState(prev => ({
-      ...prev,
-      phase: 'nightmare',
-      audioFiles: scareAudios,
-      imageFile: nightmareImages[Math.floor(Math.random() * nightmareImages.length)],
-      messages: messages,
-      intensity: 1.0,
-      glitchLevel: 0.9
-    }));
-
-    // Maximum volume
-    playAudio(scareAudios, 1.0);
-
-    // Shake the screen violently
-    if (containerRef.current) {
-      containerRef.current.style.animation = 'violent-shake 0.1s ease-in-out infinite';
-    }
-
-    // Display all messages in sequence
-    messages.forEach((message, index) => {
       setTimeout(() => {
-        displayMessage(message, index);
-      }, index * 800);
-    });
+        if (flashImage.parentNode) {
+          flashImage.remove();
+        }
+      }, 100);
 
-    // Schedule next phase
-    const nightmareDuration = brutalMode === 'insanity' ? 4000 : 3000;
-    setTimeout(() => transitionToAftermathPhase(), nightmareDuration);
-  };
+      setTimeout(() => transitionToFlashingPhase(), 1000);
+    };
 
-  const transitionToAftermathPhase = () => {
-    const whisperSound = terrorSounds[Math.min(terrorSounds.length - 1, 2)];
+    const transitionToFlashingPhase = () => {
+      const initialAudio = getRandomSound();
 
-    setTerrorState(prev => ({
-      ...prev,
-      phase: 'aftermath',
-      audioFiles: [whisperSound],
-      intensity: 0.6,
-      glitchLevel: 0.4
-    }));
-
-    // Lower volume
-    playAudio([whisperSound], 0.4);
-
-    // Reduce screen shake
-    if (containerRef.current) {
-      containerRef.current.style.animation = 'shake 0.3s ease-in-out infinite';
-    }
-
-    // Schedule final phase
-    setTimeout(() => transitionToLingeringPhase(), 2000);
-  };
-
-  const transitionToLingeringPhase = () => {
-    setTerrorState(prev => ({
-      ...prev,
-      phase: 'lingering',
-      audioFiles: [],
-      intensity: 0.3,
-      glitchLevel: 0.2
-    }));
-
-    // Very subtle effects
-    if (containerRef.current) {
-      containerRef.current.style.animation = 'subtle-pulse 1s ease-in-out infinite';
-    }
-
-    // Schedule end
-    const lingerDuration = brutalMode === 'insanity' ? 2500 : 1500;
-    const endTimeoutId = setTimeout(endTerrorSequence, lingerDuration);
-
-    setTerrorState(prev => ({
-      ...prev,
-      timeoutId: endTimeoutId as unknown as NodeJS.Timeout
-    }));
-  };
-
-  const endTerrorSequence = () => {
-    setTerrorState({
-      show: false,
-      audioFiles: [],
-      imageFile: nightmareImages[0],
-      timeoutId: null,
-      phase: 'dormant',
-      messages: [],
-      intensity: 0,
-      glitchLevel: 0
-    });
-
-    // Update visit count for more tailored experiences next time
-    try {
-      const newVisitCount = visitCount + 1;
-      localStorage.setItem('hauntedVisits', newVisitCount.toString());
-      setVisitCount(newVisitCount);
-    } catch (e) {
-      console.warn("Failed to update localStorage:", e);
-    }
-  };
-
-  // Handle mouse events
-  const handleMouseEnter = () => {
-    // Update last activity
-    setLastActivity(Date.now());
-
-    // Create unpredictable delay based on visit count
-    let randomDelay;
-
-    // More unpredictable for repeat visitors
-    if (visitCount > 2) {
-      randomDelay = Math.floor(Math.random() * 2000) + 200;
-
-      // Sometimes don't trigger at all to build false security
-      if (Math.random() > 0.7) {
-        return; // Don't trigger this time
-      }
-    } else {
-      // More predictable for first-time visitors
-      randomDelay = Math.floor(Math.random() * 1000) + 300;
-    }
-
-    // Display jumpscare after delay
-    const delayTimeoutId = setTimeout(beginSubliminalPhase, randomDelay);
-
-    setTerrorState(prev => ({
-      ...prev,
-      timeoutId: delayTimeoutId as unknown as NodeJS.Timeout
-    }));
-  };
-
-  const handleMouseLeave = () => {
-    // Update last activity
-    setLastActivity(Date.now());
-
-    // If terror not shown yet and there's a pending timeout, cancel it
-    if (terrorState.timeoutId && terrorState.phase === 'dormant') {
-      clearTimeout(terrorState.timeoutId);
       setTerrorState(prev => ({
         ...prev,
-        timeoutId: null
+        phase: 'flashing',
+        audioFiles: [initialAudio],
+        messages: [getRandomMessage()],
+        intensity: 0.5,
+        glitchLevel: 0.3
       }));
-    }
-  };
 
-  // Setup and cleanup for terror experience
+      playAudio([initialAudio], 0.3);
+
+      let flashIndex = 0;
+      const flashIntervalId = setInterval(() => {
+        setTerrorState(prev => ({
+          ...prev,
+          imageFile: NIGHTMARE_IMAGES[flashIndex % NIGHTMARE_IMAGES.length]
+        }));
+
+        flashIndex++;
+        if (flashIndex >= 8) {
+          clearInterval(flashIntervalId);
+        }
+      }, 100);
+
+      hauntingInterval.current = flashIntervalId;
+
+      setTimeout(() => transitionToCrescendoPhase(), 1500);
+    };
+
+    const transitionToCrescendoPhase = () => {
+      const tensionAudio = TERROR_SOUNDS[Math.min(TERROR_SOUNDS.length - 1, 1)];
+
+      setTerrorState(prev => ({
+        ...prev,
+        phase: 'crescendo',
+        audioFiles: [tensionAudio],
+        intensity: 0.7,
+        glitchLevel: 0.5
+      }));
+
+      playAudio([tensionAudio], 0.6);
+
+      displayMessage(terrorState.messages[0], 0);
+
+      if (containerRef.current) {
+        containerRef.current.style.animation = 'pulse 0.8s ease-in-out infinite';
+      }
+
+      setTimeout(() => transitionToNightmarePhase(), 1200);
+    };
+
+    const transitionToNightmarePhase = () => {
+      const scareAudios = [
+        getRandomSound(),
+        TERROR_SOUNDS[Math.min(TERROR_SOUNDS.length - 1, 3)]
+      ];
+
+      const messages: string[] = [];
+      const shuffled = [...HAUNTING_PHRASES].sort(() => Math.random() - 0.5);
+      for (let i = 0; i < 3; i++) {
+        messages.push(shuffled[i]);
+      }
+
+      setTerrorState(prev => ({
+        ...prev,
+        phase: 'nightmare',
+        audioFiles: scareAudios,
+        imageFile: getRandomImage(),
+        messages: messages,
+        intensity: 1.0,
+        glitchLevel: 0.9
+      }));
+
+      playAudio(scareAudios, 1.0);
+
+      if (containerRef.current) {
+        containerRef.current.style.animation = 'violent-shake 0.1s ease-in-out infinite';
+      }
+
+      messages.forEach((message, index) => {
+        setTimeout(() => {
+          displayMessage(message, index);
+        }, index * 800);
+      });
+
+      const nightmareDuration = brutalMode === 'insanity' ? 4000 : 3000;
+      setTimeout(() => transitionToAftermathPhase(), nightmareDuration);
+    };
+
+    const transitionToAftermathPhase = () => {
+      const whisperSound = TERROR_SOUNDS[Math.min(TERROR_SOUNDS.length - 1, 2)];
+
+      setTerrorState(prev => ({
+        ...prev,
+        phase: 'aftermath',
+        audioFiles: [whisperSound],
+        intensity: 0.6,
+        glitchLevel: 0.4
+      }));
+
+      playAudio([whisperSound], 0.4);
+
+      if (containerRef.current) {
+        containerRef.current.style.animation = 'shake 0.3s ease-in-out infinite';
+      }
+
+      setTimeout(() => transitionToLingeringPhase(), 2000);
+    };
+
+    const transitionToLingeringPhase = () => {
+      setTerrorState(prev => ({
+        ...prev,
+        phase: 'lingering',
+        audioFiles: [],
+        intensity: 0.3,
+        glitchLevel: 0.2
+      }));
+
+      if (containerRef.current) {
+        containerRef.current.style.animation = 'subtle-pulse 1s ease-in-out infinite';
+      }
+
+      const lingerDuration = brutalMode === 'insanity' ? 2500 : 1500;
+      const endTimeoutId = setTimeout(endTerrorSequence, lingerDuration);
+
+      setTerrorState(prev => ({
+        ...prev,
+        timeoutId: endTimeoutId as unknown as NodeJS.Timeout
+      }));
+    };
+
+    const endTerrorSequence = () => {
+      setTerrorState(initialTerrorState);
+
+      try {
+        const newVisitCount = visitCount + 1;
+        localStorage.setItem('hauntedVisits', newVisitCount.toString());
+        setVisitCount(newVisitCount);
+      } catch (e) {
+        console.warn("Failed to update localStorage:", e);
+      }
+    };
+
+    return {
+      beginSubliminalPhase,
+      endTerrorSequence
+    };
+  }, [brutalMode, displayMessage, initialTerrorState, playAudio, terrorState.messages, visitCount]);
+
+  const { beginSubliminalPhase, endTerrorSequence } = terrorPhaseController();
+
+  useEffect(() => {
+    setIsClient(true);
+    try {
+      const storedVisits = localStorage.getItem('hauntedVisits');
+      setVisitCount(storedVisits ? parseInt(storedVisits) : 0);
+      setLastActivity(Date.now());
+    } catch (e) {
+      console.warn("Failed to access localStorage:", e);
+    }
+  }, []);
+
   useEffect(() => {
     if (!isClient) return;
 
     if (terrorState.show) {
-      // Lock scrolling and create visual effects
       lockInterface();
       createVisualEffects();
     } else {
-      // Clean up effects
       unlockInterface();
       cleanupEffects();
     }
@@ -535,13 +445,11 @@ export function BrutalImage({
     return () => {
       cleanupEffects();
     };
-  }, [terrorState.show, brutalMode, isClient]);
+  }, [terrorState.show, brutalMode, isClient, cleanupEffects, createVisualEffects, lockInterface, unlockInterface]);
 
-  // Page visibility and focus tracking
   useEffect(() => {
     const handleVisibilityChange = () => {
       if (document.visibilityState === 'hidden') {
-        // When user switches tabs, prepare for return
         if (Math.random() < triggerChance * 2) {
           try {
             localStorage.setItem('hauntedTrap', 'true');
@@ -553,7 +461,6 @@ export function BrutalImage({
     };
 
     const handleWindowFocus = () => {
-      // When user returns to the window, possibly trigger
       if (terrorState.phase === 'dormant' && visitCount > 1) {
         const timeSinceLastActivity = Date.now() - lastActivity;
         if (timeSinceLastActivity > 5000 && Math.random() < triggerChance) {
@@ -569,11 +476,52 @@ export function BrutalImage({
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       window.removeEventListener('focus', handleWindowFocus);
     };
-  }, [terrorState.phase, visitCount, lastActivity, triggerChance]);
+  }, [terrorState.phase, visitCount, lastActivity, triggerChance, beginSubliminalPhase]);
+
+  const handleMouseEnter = useCallback(() => {
+    setLastActivity(Date.now());
+
+    let randomDelay;
+
+    if (visitCount > 2) {
+      randomDelay = Math.floor(Math.random() * 2000) + 200;
+
+      if (Math.random() > 0.7) {
+        return;
+      }
+    } else {
+      randomDelay = Math.floor(Math.random() * 1000) + 300;
+    }
+
+    const delayTimeoutId = setTimeout(beginSubliminalPhase, randomDelay);
+
+    setTerrorState(prev => ({
+      ...prev,
+      timeoutId: delayTimeoutId as unknown as NodeJS.Timeout
+    }));
+  }, [beginSubliminalPhase, visitCount]);
+
+  const handleMouseLeave = useCallback(() => {
+    setLastActivity(Date.now());
+
+    if (terrorState.timeoutId && terrorState.phase === 'dormant') {
+      clearTimeout(terrorState.timeoutId);
+      setTerrorState(prev => ({
+        ...prev,
+        timeoutId: null
+      }));
+    }
+  }, [terrorState.phase, terrorState.timeoutId]);
+
+  const imageClassName = terrorState.phase === 'subliminal' ? 'opacity-30 brightness-200' :
+    terrorState.phase === 'flashing' ? 'brightness-200 contrast-200 animate-[flicker_0.1s_ease-in-out_infinite]' :
+      terrorState.phase === 'crescendo' ? 'brightness-150 animate-[pulse_0.5s_ease-in-out_infinite]' :
+        terrorState.phase === 'nightmare' ? 'brightness-110 animate-[shake_0.2s_ease-in-out_infinite]' :
+          terrorState.phase === 'aftermath' ? 'brightness-75 grayscale animate-[pulse_0.5s_ease-in-out_infinite]' :
+            'brightness-50 grayscale animate-[fadeInOut_3s_ease-in-out_infinite]';
 
   return (
     <>
-      {/* Haunted image with event handlers */}
       <div
         className={`relative cursor-pointer transform transition duration-300 hover:scale-105 ${className}`}
         onMouseEnter={handleMouseEnter}
@@ -588,11 +536,9 @@ export function BrutalImage({
           className="rounded-full"
           priority
         />
-        {/* Subtle pulsing indicator */}
         <div className="absolute -bottom-1 -right-1 h-4 w-4 rounded-full bg-red-500 opacity-70 animate-pulse"></div>
       </div>
 
-      {/* Full screen terror overlay */}
       {terrorState.show && (
         <div
           className="haunted-element fixed inset-0 flex items-center justify-center bg-black"
@@ -609,24 +555,16 @@ export function BrutalImage({
           }}
         >
           <div className="relative h-screen w-screen overflow-hidden">
-            {/* Main terror image */}
             <Image
               src={terrorState.imageFile}
               alt="Haunted"
               fill
-              className={`object-cover ${terrorState.phase === 'subliminal' ? 'opacity-30 brightness-200' :
-                terrorState.phase === 'flashing' ? 'brightness-200 contrast-200 animate-[flicker_0.1s_ease-in-out_infinite]' :
-                  terrorState.phase === 'crescendo' ? 'brightness-150 animate-[pulse_0.5s_ease-in-out_infinite]' :
-                    terrorState.phase === 'nightmare' ? 'brightness-110 animate-[shake_0.2s_ease-in-out_infinite]' :
-                      terrorState.phase === 'aftermath' ? 'brightness-75 grayscale animate-[pulse_0.5s_ease-in-out_infinite]' :
-                        'brightness-50 grayscale animate-[fadeInOut_3s_ease-in-out_infinite]'
-                }`}
+              className={`object-cover ${imageClassName}`}
               priority
               sizes="100vw"
               unoptimized={true}
             />
 
-            {/* Additional visual elements for demonic and insanity modes */}
             {(brutalMode === 'demonic' || brutalMode === 'insanity') && (
               <>
                 <div className="absolute inset-0 bg-red-900 mix-blend-multiply opacity-40 animate-pulse"></div>
@@ -637,7 +575,6 @@ export function BrutalImage({
         </div>
       )}
 
-      {/* Add global CSS animations */}
       <style jsx global>{`
         @keyframes flicker {
           0% { opacity: 1; }
@@ -682,7 +619,6 @@ export function BrutalImage({
           100% { opacity: 0.05; }
         }
 
-        /* Ensure haunted experience covers everything */
         body.terror-active {
           overflow: hidden !important;
           height: 100% !important;
@@ -694,7 +630,6 @@ export function BrutalImage({
           visibility: hidden !important;
         }
 
-        /* Ensure we can't be stopped */
         .haunted-element {
           position: fixed !important;
           z-index: 2147483647 !important;
