@@ -94,14 +94,14 @@ export function BrutalImage({
       try {
         const audio = new Audio(file);
         audio.volume = Math.min(volume, 0.95);
-        audio.play().catch(e => {
+        audio.play().catch(() => {
           console.warn("Audio play failed, will retry on interaction");
           document.addEventListener('click', () => {
-            audio.play().catch(e => console.warn("Retry failed"));
+            audio.play().catch(() => console.warn("Retry failed"));
           }, { once: true });
         });
         return audio;
-      } catch (e) {
+      } catch {
         console.warn("Error creating audio");
         return null as unknown as HTMLAudioElement;
       }
@@ -416,9 +416,9 @@ export function BrutalImage({
       beginSubliminalPhase,
       endTerrorSequence
     };
-  }, [brutalMode, displayMessage, initialTerrorState, playAudio, terrorState.messages, visitCount]);
+  }, [brutalMode, displayMessage, playAudio, terrorState.messages, visitCount]);
 
-  const { beginSubliminalPhase, endTerrorSequence } = terrorPhaseController();
+  const { beginSubliminalPhase } = terrorPhaseController();
 
   useEffect(() => {
     setIsClient(true);
