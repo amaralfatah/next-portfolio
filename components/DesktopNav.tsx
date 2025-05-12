@@ -1,9 +1,9 @@
 "use client"
 
-import { usePathname } from 'next/navigation'
+import {usePathname} from 'next/navigation'
 import Link from 'next/link'
-import { ModeToggle } from "@/components/ModeToggle"
-import { menuLinks } from "@/data/menu-links"
+import {ModeToggle} from "@/components/ModeToggle"
+import {menuLinks} from "@/data/menu-links"
 import { BrutalImage } from './BrutalImage'
 
 export function DesktopNav() {
@@ -22,7 +22,6 @@ export function DesktopNav() {
         <div className="flex w-full flex-col items-start gap-4 text-left">
           <div className="relative">
             <BrutalImage />
-            <div className="absolute -bottom-1 -right-1 h-4 w-4 rounded-full bg-red-500 opacity-70 animate-pulse"></div>
           </div>
 
           <div>
@@ -39,14 +38,14 @@ export function DesktopNav() {
                 className={`flex items-center gap-2 py-1 transition-colors ${isActiveLink(link.url)
                   ? "text-foreground"
                   : "text-muted-foreground hover:text-foreground"
-                  }`}
+                }`}
               >
                 <span>{link.name}</span>
               </Link>
             </li>
           ))}
           <li>
-            <ModeToggle />
+            <ModeToggle/>
           </li>
         </ul>
       </nav>

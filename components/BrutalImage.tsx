@@ -11,6 +11,7 @@ interface BrutalImageProps {
   brutalMode?: 'nightmarish' | 'demonic' | 'insanity';
   className?: string;
   triggerChance?: number;
+  isActive?: boolean;
 }
 
 const TERROR_SOUNDS = [
@@ -52,7 +53,8 @@ export function BrutalImage({
   height = 72,
   brutalMode = 'nightmarish',
   className = "",
-  triggerChance = 0.3
+  triggerChance = 0.3,
+  isActive = false
 }: BrutalImageProps) {
   const [isClient, setIsClient] = useState(false);
   const [visitCount, setVisitCount] = useState(0);
@@ -448,6 +450,9 @@ export function BrutalImage({
   }, [terrorState.show, brutalMode, isClient, cleanupEffects, createVisualEffects, lockInterface, unlockInterface]);
 
   useEffect(() => {
+    // Jika tidak aktif, tidak perlu menambahkan event listener
+    if (!isActive) return;
+
     const handleVisibilityChange = () => {
       if (document.visibilityState === 'hidden') {
         if (Math.random() < triggerChance * 2) {
@@ -476,10 +481,13 @@ export function BrutalImage({
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       window.removeEventListener('focus', handleWindowFocus);
     };
-  }, [terrorState.phase, visitCount, lastActivity, triggerChance, beginSubliminalPhase]);
+  }, [terrorState.phase, visitCount, lastActivity, triggerChance, beginSubliminalPhase, isActive]); // Tambahkan isActive
 
   const handleMouseEnter = useCallback(() => {
     setLastActivity(Date.now());
+
+    // Jika tidak aktif, tidak perlu memproses jumpscare
+    if (!isActive) return;
 
     let randomDelay;
 
@@ -499,7 +507,8 @@ export function BrutalImage({
       ...prev,
       timeoutId: delayTimeoutId as unknown as NodeJS.Timeout
     }));
-  }, [beginSubliminalPhase, visitCount]);
+  }, [beginSubliminalPhase, visitCount, isActive]); // Tambahkan isActive sebagai dependency
+
 
   const handleMouseLeave = useCallback(() => {
     setLastActivity(Date.now());
@@ -536,7 +545,9 @@ export function BrutalImage({
           className="rounded-full"
           priority
         />
-        <div className="absolute -bottom-1 -right-1 h-4 w-4 rounded-full bg-red-500 opacity-70 animate-pulse"></div>
+        {isActive && (
+          <div className="absolute -bottom-1 -right-1 h-4 w-4 rounded-full bg-red-500 opacity-70 animate-pulse"></div>
+        )}
       </div>
 
       {terrorState.show && (
